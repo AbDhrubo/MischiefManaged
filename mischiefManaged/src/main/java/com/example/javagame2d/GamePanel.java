@@ -1,5 +1,6 @@
 package com.example.javagame2d;
 
+import Entity.Entity;
 import Entity.Player;
 import Tile.tileManager;
 import objects.SuperObject;
@@ -28,6 +29,7 @@ public class GamePanel extends JPanel implements Runnable{
     Thread gameThread;
     public Player player = new Player(this,keyH);
     public SuperObject obj[] = new SuperObject[10];
+    public Entity npc[] = new Entity[10];
     public final int titleState = 0;
     public int gameState;
     public final int playState = 1;
@@ -44,6 +46,7 @@ public class GamePanel extends JPanel implements Runnable{
     public void setupGame()
     {
         aSetter.setObject();
+        aSetter.setNPC();
         playMusic(0);
         gameState = playState;
     }
@@ -115,6 +118,13 @@ public class GamePanel extends JPanel implements Runnable{
             if(obj[i] != null)
             {
                 obj[i].draw(G2,this);
+            }
+        }
+        for(int i = 0;i < npc.length;i++)
+        {
+            if(npc[i] != null)
+            {
+                npc[i].draw(G2);
             }
         }
         player.draw(G2);

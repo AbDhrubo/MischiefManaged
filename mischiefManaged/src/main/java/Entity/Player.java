@@ -2,6 +2,7 @@ package Entity;
 
 import com.example.javagame2d.GamePanel;
 import com.example.javagame2d.KeyHandler;
+import com.example.javagame2d.UtilityTools;
 
 import javax.imageio.ImageIO;
 import java.awt.*;
@@ -10,7 +11,7 @@ import java.io.IOException;
 
 public class Player extends Entity
 {
-    GamePanel gp;
+    //GamePanel gp;
     KeyHandler keyH;
     public final int screenX;
     public final int screenY;
@@ -19,7 +20,8 @@ public class Player extends Entity
 
     public Player(GamePanel gp,KeyHandler keyH)
     {
-        this.gp = gp;
+        super(gp);
+        //this.gp = gp;
         this.keyH = keyH;
 
         screenX = gp.screenWidth/2 - (gp.tileSize/2);
@@ -44,25 +46,16 @@ public class Player extends Entity
     }
     public void getPlayerImage()
     {
-        try
-        {
-            up1 = ImageIO.read(getClass().getResourceAsStream("/player/boy_up_1.png"));
-            up2 = ImageIO.read(getClass().getResourceAsStream("/player/boy_up_2.png"));
-            down1 = ImageIO.read(getClass().getResourceAsStream("/player/boy_down_1.png"));
-            down2 = ImageIO.read(getClass().getResourceAsStream("/player/boy_down_2.png"));
-            left1 = ImageIO.read(getClass().getResourceAsStream("/player/boy_left_1.png"));
-            left2 = ImageIO.read(getClass().getResourceAsStream("/player/boy_left_2.png"));
-            right1 = ImageIO.read(getClass().getResourceAsStream("/player/boy_right_1.png"));
-            right2 = ImageIO.read(getClass().getResourceAsStream("/player/boy_right_2.png"));
-
-
-        }
-
-        catch(IOException e)
-        {
-            e.printStackTrace();
-        }
+        up1 = setup("/player/boy_up_1");
+        up2 = setup("/player/boy_up_2");
+        down1 = setup("/player/boy_down_1");
+        down2 = setup("/player/boy_down_2");
+        left1 = setup("/player/boy_left_1");
+        left2 = setup("/player/boy_left_2");
+        right1 = setup("/player/boy_right_1");
+        right2 = setup("/player/boy_right_2");
     }
+
     public void update()
     {
         if(keyH.upPressed == true || keyH.downPressed == true || keyH.leftPressed == true || keyH.rightPressed == true)
@@ -215,6 +208,6 @@ public void pickUpObject(int i)
 
         }
 
-        G2.drawImage(image,screenX,screenY,gp.tileSize,gp.tileSize,null);
+        G2.drawImage(image,screenX,screenY,null);
     }
 }

@@ -1,11 +1,15 @@
 package objects;
 
+import com.example.javagame2d.GamePanel;
+
 import javax.imageio.ImageIO;
 import java.io.IOException;
 
 public class OBJ_Chest extends SuperObject{
-    public OBJ_Chest()
+    GamePanel gp;
+    public OBJ_Chest(GamePanel gp)
     {
+        this.gp = gp;
         name = "Chest";
         try
         {
