@@ -162,8 +162,15 @@ public void interactNPC(int i)
 {
     if(i != 999)
     {
-        System.out.println("Maros Ken?!?!");
+        if(gp.keyH.enterPressed == true)
+        {
+            //System.out.println("Maros Ken?!?!");
+            gp.gameState = gp.dialogueState;
+            gp.npc[i].speak();
+        }
+
     }
+    gp.keyH.enterPressed = false;
 }
     public void draw(Graphics2D G2)
     {

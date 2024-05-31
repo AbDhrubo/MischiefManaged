@@ -15,6 +15,7 @@ public class NPC_OldMan extends Entity{
         direction = "down";
         speed = 1;
         getOldManImage();
+        setDialogue();
     }
     public void getOldManImage()
     {
@@ -26,6 +27,14 @@ public class NPC_OldMan extends Entity{
         left2 = setup("/NPC/oldman_left_2");
         right1 = setup("/NPC/oldman_right_1");
         right2 = setup("/NPC/oldman_right_2");
+    }
+
+    public void setDialogue()
+    {
+        dialogues[0] = "Mysterious, Very Mysterious";
+        dialogues[1] = "Khub Bhalo Korsos Topshe";
+        dialogues[2] = "Ei kaj tore ke koirte koisse?!";
+        dialogues[3] = "Dumbo GG No Cap fr fr";
     }
     public void setAction()
     {
@@ -55,5 +64,29 @@ public class NPC_OldMan extends Entity{
             actionLockCounter = 0;
         }
 
+    }
+    public void speak()
+    {
+        if(dialogues[dialogueIndex] == null)
+        {
+            dialogueIndex = 0;
+        }
+        gp.ui.currentDialogue = dialogues[dialogueIndex];
+        dialogueIndex++;
+        switch (gp.player.direction)
+        {
+            case "up":
+                direction = "down";
+                break;
+            case "down":
+                direction = "up";
+                break;
+            case "left":
+                direction = "right";
+                break;
+            case "right":
+                direction = "left";
+                break;
+        }
     }
     }
