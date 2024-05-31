@@ -8,8 +8,9 @@ import java.text.DecimalFormat;
 
 public class UI {
     GamePanel gp;
+    Graphics2D G2;
     Font arial_40,arial_80B;
-    BufferedImage keyImage;
+    //BufferedImage keyImage;
     public boolean messageOn = false;
     public String message = "";
     int messageCounter = 0;
@@ -22,8 +23,8 @@ public class UI {
         this.gp = gp;
         arial_40 = new Font("Arial",Font.PLAIN,40);
         arial_80B = new Font("Arial",Font.BOLD,80);
-        OBJ_Key key = new OBJ_Key();
-        keyImage = key.image;
+        //OBJ_Key key = new OBJ_Key();
+        //keyImage = key.image;
     }
 
     public void showMessage(String text)
@@ -34,7 +35,18 @@ public class UI {
 
     public void draw(Graphics2D G2)
     {
-        if(gameFinished == true)
+        this.G2 = G2;
+        G2.setFont(arial_40);
+        G2.setColor(Color.white);
+        if(gp.gameState == gp.playState)
+        {
+
+        }
+        if(gp.gameState == gp.pauseState)
+        {
+            drawPauseScreen();
+        }
+        /*if(gameFinished == true)
         {
             G2.setFont(arial_40);
             G2.setColor(Color.white);
@@ -85,9 +97,22 @@ public class UI {
                     messageOn = false;
                 }
             }
-        }
+        }*/
 
     }
+    public void drawPauseScreen()
+    {
+        String text = "PAUSED";
+        int x = getXforCenteredText(text);
+        int y = gp.screenHeight/2;
+        G2.drawString(text,x,y);
+    }
 
+    public int getXforCenteredText(String text)
+    {
+        int length = (int)G2.getFontMetrics().getStringBounds(text,G2).getWidth();
+        int x = gp.screenWidth/2 - length/2;
+        return x;
+    }
 
 }
