@@ -89,6 +89,8 @@ public class Player extends Entity
             gp.cChecker.checkObject(this,true);
             int objIndex = gp.cChecker.checkObject(this,true);
             pickUpObject(objIndex);
+            int npcIndex = gp.cChecker.checkEntity(this,gp.npc);
+            interactNPC(npcIndex);
             if(collisionOn == false)
             {
                 switch(direction)
@@ -154,6 +156,13 @@ public void pickUpObject(int i)
             gp.stopMusic();
 
         }*/
+    }
+}
+public void interactNPC(int i)
+{
+    if(i != 999)
+    {
+        System.out.println("Maros Ken?!?!");
     }
 }
     public void draw(Graphics2D G2)
