@@ -18,6 +18,7 @@ public class UI {
     int messageCounter = 0;
     public boolean gameFinished = false;
     public String currentDialogue = "";
+    public int commandNumber = 0;
     double playTime;
     DecimalFormat dFormat = new DecimalFormat("#0.00");
 
@@ -116,18 +117,76 @@ public class UI {
     {
 
         try {
-            bgImage = ImageIO.read(getClass().getResourceAsStream( "/player/1655970301.jpg"));
+            bgImage = ImageIO.read(getClass().getResourceAsStream( "/player/Feluda_cover.jpg"));
 
         } catch (IOException e) {
             e.printStackTrace();
         }
-        G2.drawImage(bgImage,gp.tileSize - 64,gp.tileSize/ + 64,null);
+        G2.drawImage(bgImage,gp.tileSize/64 - 150  ,gp.tileSize/64,null);
         G2.setFont(G2.getFont().deriveFont(Font.BOLD,64));
         String text = "Mischief Managed!";
         int x = getXforCenteredText(text);
-        int y = gp.tileSize * 6;
+        int y = gp.tileSize * 5;
         G2.setColor(Color.white);
         G2.drawString(text,x,y);
+
+        G2.setFont(G2.getFont().deriveFont(Font.BOLD,36f));
+        text = "NEW GAME";
+        x = getXforCenteredText(text);
+        y += gp.tileSize * 1;
+        G2.drawString(text,x,y);
+        if(commandNumber == 0)
+        {
+            G2.drawString(">",x - gp.tileSize,y);
+        }
+        G2.setFont(G2.getFont().deriveFont(Font.BOLD,36f));
+        text = "LOAD GAME";
+        x = getXforCenteredText(text);
+        y += gp.tileSize;
+        G2.drawString(text,x,y);
+        if(commandNumber == 1)
+        {
+            G2.drawString(">",x - gp.tileSize,y);
+        }
+        G2.setFont(G2.getFont().deriveFont(Font.BOLD,36f));
+        text = "QUIT";
+        x = getXforCenteredText(text);
+        y += gp.tileSize;
+        G2.drawString(text,x,y);
+        if(commandNumber == 2)
+        {
+            G2.drawString(">",x - gp.tileSize,y);
+        }
+
+        G2.setFont(G2.getFont().deriveFont(Font.BOLD,36f));
+        text = "SOUND ON";
+        x = getXforCenteredText(text);
+        y += gp.tileSize;
+        G2.drawString(text,x,y);
+        if(commandNumber == 3)
+        {
+            G2.drawString(">",x - gp.tileSize,y);
+        }
+
+        G2.setFont(G2.getFont().deriveFont(Font.BOLD,36f));
+        text = "SOUND OFF";
+        x = getXforCenteredText(text);
+        y += gp.tileSize;
+        G2.drawString(text,x,y);
+        if(commandNumber == 4)
+        {
+            G2.drawString(">",x - gp.tileSize,y);
+        }
+
+        G2.setFont(G2.getFont().deriveFont(Font.BOLD,36f));
+        text = "HOW TO PLAY MISCHIEF MANAGED?";
+        x = getXforCenteredText(text) + 1;
+        y += gp.tileSize;
+        G2.drawString(text,x,y);
+        if(commandNumber == 5)
+        {
+            G2.drawString(">",x - gp.tileSize,y);
+        }
     }
     public void drawPauseScreen()
     {
