@@ -12,7 +12,7 @@ public class HelloApplication  {
         JFrame window = new JFrame();
         window.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         window.setResizable(false);
-        window.setTitle("Mischief Managed");
+        window.setTitle("Mischief Managed!");
         GamePanel gamePanel = new GamePanel();
         window.add(gamePanel);
         window.pack();

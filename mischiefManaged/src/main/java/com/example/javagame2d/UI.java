@@ -2,15 +2,17 @@ package com.example.javagame2d;
 
 import objects.OBJ_Key;
 
+import javax.imageio.ImageIO;
 import java.awt.*;
 import java.awt.image.BufferedImage;
+import java.io.IOException;
 import java.text.DecimalFormat;
 
 public class UI {
     GamePanel gp;
     Graphics2D G2;
     Font arial_40,arial_80B;
-    //BufferedImage keyImage;
+    BufferedImage bgImage;
     public boolean messageOn = false;
     public String message = "";
     int messageCounter = 0;
@@ -39,6 +41,10 @@ public class UI {
         this.G2 = G2;
         G2.setFont(arial_40);
         G2.setColor(Color.white);
+        if(gp.gameState == gp.titleState)
+        {
+            drawTitleScreen();
+        }
         if(gp.gameState == gp.playState)
         {
 
@@ -105,6 +111,23 @@ public class UI {
             }
         }*/
 
+    }
+    public void drawTitleScreen()
+    {
+
+        try {
+            bgImage = ImageIO.read(getClass().getResourceAsStream( "/player/1655970301.jpg"));
+
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        G2.drawImage(bgImage,gp.tileSize - 64,gp.tileSize/ + 64,null);
+        G2.setFont(G2.getFont().deriveFont(Font.BOLD,64));
+        String text = "Mischief Managed!";
+        int x = getXforCenteredText(text);
+        int y = gp.tileSize * 6;
+        G2.setColor(Color.white);
+        G2.drawString(text,x,y);
     }
     public void drawPauseScreen()
     {
