@@ -10,6 +10,7 @@ import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
+import java.util.Objects;
 
 public class tileManager {
     GamePanel gp;
@@ -18,32 +19,27 @@ public class tileManager {
     public tileManager(GamePanel gp)
     {
       this.gp = gp;
-      Tile = new tile[10];
+      Tile = new tile[150];
 
 
       mapTileNum = new int[gp.maxWorldCol][gp.maxWorldRow];
       getTileImage();
-      loadMap("/maps/world_01.txt");
+      loadMap("/maps/level_3.txt");
     }
 
     public void getTileImage()
     {
-            setup(0,"grass",false);
-            setup(1,"wall",true);
-            setup(2,"water",false);
-            setup(3,"earth",false);
-            setup(4,"tree",true);
-            setup(5,"sand",false);
-    }
-    public void setup(int index,String imagePath,boolean collision)
-    {
-        UtilityTools uTool = new UtilityTools();
         try
         {
-            Tile[index] = new tile();
-            Tile[index].image = ImageIO.read(getClass().getResourceAsStream("/tiles/" + imagePath+".png"));
-            Tile[index].image = uTool.scaleImage(Tile[index].image,gp.tileSize,gp.tileSize);
-            Tile[index].collision = collision;
+
+            int index;
+            for(index=0; index<138; index++)
+            {
+                Tile[index] = new tile();
+                String str = "/level_3/" + index + ".png";
+                Tile[index].image = ImageIO.read(Objects.requireNonNull(getClass().getResourceAsStream(str)));
+                if( index!= 0 && index!=4 && index!=59 && index!=84 && index!=85 && index!=108 && index!=109 && index!=21 && index!=23 && index!=24  && index!=26  && index!=99 && index!=97) Tile[index].collision = true;
+            }
         }
 
         catch(IOException e)
@@ -51,6 +47,40 @@ public class tileManager {
             e.printStackTrace();
         }
     }
+
+
+
+
+    //    public void getTileImage()
+//    {
+//        int index;
+//        for (index = 0; index < 138; index++)
+//        {
+//            boolean collision = false;
+//            if( index!= 0 && index!=4 && index!=59 && index!=84 && index!=85 && index!=108 && index!=109 && index!=21 && index!=23 && index!=24  && index!=26  && index!=99 && index!=97) collision = true;
+////
+//            setup(index, collision);
+//        }
+//    }
+//
+//    public void setup(int index, boolean collision)
+//    {
+//        UtilityTools uTool = new UtilityTools();
+//
+//        try
+//        {
+//            Tile[index] = new tile();
+//            String str = "/level_3/" + index + ".png";
+//            Tile[index].image = ImageIO.read(Objects.requireNonNull(getClass().getResourceAsStream(str)));
+//            Tile[index].image = uTool.scaleImage(Tile[index].image,gp.tileSize,gp.tileSize);
+//            Tile[index].collision = collision;
+//        }
+//
+//        catch(IOException e)
+//        {
+//            e.printStackTrace();
+//        }
+//    }
     public void loadMap(String filePath)
     {
         try
@@ -103,7 +133,8 @@ public class tileManager {
            worldY + gp.tileSize > gp.player.worldY - gp.player.screenY &&
            worldY - gp.tileSize < gp.player.worldY + gp.player.screenY)
            {
-               G2.drawImage(Tile[tileNum].image,screenX,screenY,null);
+//               G2.drawImage(Tile[tileNum].image,screenX,screenY,null);
+               G2.drawImage(Tile[tileNum].image,screenX,screenY,gp.tileSize,gp.tileSize,null);
            }
 
            worldCol++;
