@@ -84,9 +84,6 @@ public class KeyHandler implements KeyListener {
         {
             rightPressed = true;
         }
-
-
-
         if(code == KeyEvent.VK_P)
         {
             gp.gameState = gp.pauseState;
