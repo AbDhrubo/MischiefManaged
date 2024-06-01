@@ -107,7 +107,7 @@ public class GamePanel extends JPanel implements Runnable{
         }
         if(gameState == pauseState)
         {
-            //ui.drawPauseScreen();
+            ui.drawPauseScreen();
             //ui.draw(ui.G2);
 
         }
