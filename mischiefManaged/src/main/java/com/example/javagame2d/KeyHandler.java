@@ -90,6 +90,7 @@ public class KeyHandler implements KeyListener {
         if(code == KeyEvent.VK_P)
         {
             gp.gameState = gp.pauseState;
+            System.out.println(1);
         }
         if(code == KeyEvent.VK_ENTER)
         {
@@ -110,11 +111,12 @@ public class KeyHandler implements KeyListener {
         }
     }
 
-    if(gp.gameState == gp.pauseState)
+    else if(gp.gameState == gp.pauseState)
     {
         if(code == KeyEvent.VK_P)
         {
             gp.gameState = gp.playState;
+            System.out.println(2);
         }
     }
 

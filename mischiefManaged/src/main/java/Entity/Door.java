@@ -8,13 +8,13 @@ import java.awt.image.BufferedImage;
 import java.io.IOException;
 import java.util.Random;
 
-public class NPC_OldMan extends Entity{
-    public NPC_OldMan(GamePanel gp)
+public class Door extends Entity{
+    public Door(GamePanel gp)
     {
         super(gp);
         direction = "down";
-        speed = 1;
-        getOldManImage();
+        speed = 0;
+//        getOldManImage();
         setDialogue();
     }
     public void getOldManImage()
@@ -31,8 +31,7 @@ public class NPC_OldMan extends Entity{
 
     public void setDialogue()
     {
-        dialogues[0] = "Someone's at the door";
-        dialogues[1] = "You should tell \nyour uncle about this";
+        dialogues[0] = "Keo Ashche";
     }
     public void setAction()
     {
@@ -65,24 +64,12 @@ public class NPC_OldMan extends Entity{
     }
     public void speak()
     {
-        if(gp.player.stage == 0) dialogueIndex = 0;
-        else if(gp.player.stage == 1) dialogueIndex = 1;
 
+        if (gp.player.stage == 0) dialogueIndex = 0;
+        dialogue = false;
+
+        gp.player.stage = 1;
         gp.ui.currentDialogue = dialogues[dialogueIndex];
-        switch (gp.player.direction)
-        {
-            case "up":
-                direction = "down";
-                break;
-            case "down":
-                direction = "up";
-                break;
-            case "left":
-                direction = "right";
-                break;
-            case "right":
-                direction = "left";
-                break;
-        }
+
     }
-    }
+}

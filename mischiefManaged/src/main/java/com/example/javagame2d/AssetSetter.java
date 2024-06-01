@@ -1,5 +1,6 @@
 package com.example.javagame2d;
 
+import Entity.Door;
 import Entity.NPC_OldMan;
 import objects.OBJ_Boots;
 import objects.OBJ_Chest;
@@ -15,9 +16,10 @@ public class AssetSetter {
 
     public void setObject()
     {
-        /*gp.obj[0] = new OBJ_Key(gp);
-        gp.obj[0].worldX = 23 * gp.tileSize;
-        gp.obj[0].worldY = 7 * gp.tileSize;
+        gp.obj[0] = new OBJ_Key(gp);
+        gp.obj[0].worldX = 14 * gp.tileSize;
+        gp.obj[0].worldY = 10 * gp.tileSize;
+        /*
 
         gp.obj[1] = new OBJ_Key(gp);
         gp.obj[1].worldX = 23 * gp.tileSize;
@@ -63,5 +65,9 @@ public class AssetSetter {
         gp.npc[0] = new NPC_OldMan(gp);
         gp.npc[0].worldX = gp.tileSize*15;
         gp.npc[0].worldY = gp.tileSize*10;
+
+        gp.npc[1] = new Door(gp);
+        gp.npc[1].worldX = gp.tileSize*18;
+        gp.npc[1].worldY = gp.tileSize*2;
     }
 }
