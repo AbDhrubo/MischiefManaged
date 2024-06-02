@@ -7,6 +7,8 @@ import java.net.URL;
 
 public class Sound {
     Clip clip;
+
+    public boolean state = false;
     URL soundURL[] = new URL[30];
 
     public Sound() {
@@ -34,6 +36,7 @@ public class Sound {
 
     public void play()
     {
+        state = true;
         clip.start();
     }
 
@@ -43,6 +46,7 @@ public class Sound {
     }
     public void stop()
     {
+        state = false;
         clip.stop();
     }
 }

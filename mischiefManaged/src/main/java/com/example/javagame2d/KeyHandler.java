@@ -26,14 +26,14 @@ public class KeyHandler implements KeyListener {
             gp.ui.commandNumber--;
             if(gp.ui.commandNumber < 0)
             {
-                gp.ui.commandNumber = 5;
+                gp.ui.commandNumber = 3;
             }
         }
 
         if(code == KeyEvent.VK_S)
         {
             gp.ui.commandNumber++;
-            if(gp.ui.commandNumber > 5)
+            if(gp.ui.commandNumber > 3)
             {
                 gp.ui.commandNumber = 0;
             }
@@ -47,22 +47,23 @@ public class KeyHandler implements KeyListener {
                 gp.currentMap = 0;
                 //gp.playMusic(0);
             }
+            if(gp.ui.commandNumber == 1)
+            {
+                //gp.gameState = gp.playState;
+
+            }
+
             if(gp.ui.commandNumber == 2)
             {
                 //gp.gameState = gp.playState;
-                System.exit(0);
+                if(gp.sound.state) gp.stopMusic();
+                else gp.playMusic(0);
             }
 
             if(gp.ui.commandNumber == 3)
             {
                 //gp.gameState = gp.playState;
-                gp.playMusic(0);
-            }
-
-            if(gp.ui.commandNumber == 4)
-            {
-                //gp.gameState = gp.playState;
-                gp.stopMusic();
+                System.exit(0);
             }
         }
     }
@@ -85,7 +86,7 @@ public class KeyHandler implements KeyListener {
         {
             rightPressed = true;
         }
-        if(code == KeyEvent.VK_P)
+        if(code == KeyEvent.VK_P || code == KeyEvent.VK_ESCAPE)
         {
             gp.gameState = gp.pauseState;
             System.out.println(1);
@@ -126,7 +127,7 @@ public class KeyHandler implements KeyListener {
 
     else if(gp.gameState == gp.pauseState)
     {
-        if(code == KeyEvent.VK_P)
+        if(code == KeyEvent.VK_P || code == KeyEvent.VK_ESCAPE)
         {
             gp.gameState = gp.playState;
             System.out.println(2);

@@ -28,7 +28,7 @@ public class UI {
 
     public UI(GamePanel gp) throws IOException {
         this.gp = gp;
-        arial_40 = new Font("Arial",Font.PLAIN,40);
+        arial_40 = new Font("Ar",Font.PLAIN,40);
         arial_80B = new Font("Arial",Font.BOLD,80);
 
         this.dialogueImages = new ArrayList<>();
@@ -134,76 +134,83 @@ public class UI {
             e.printStackTrace();
         }
         G2.drawImage(bgImage,gp.tileSize/64 - 150  ,gp.tileSize/64,null);
-        G2.setFont(G2.getFont().deriveFont(Font.BOLD,64));
+        G2.setFont(G2.getFont().deriveFont(Font.BOLD,33));
         String text = "Mischief Managed!";
         int x = getXforCenteredText(text);
-        int y = gp.tileSize * 5;
+        int y = gp.tileSize * 7;
         G2.setColor(Color.white);
         G2.drawString(text,x,y);
 
-        G2.setFont(G2.getFont().deriveFont(Font.BOLD,36f));
-        text = "NEW GAME";
+        G2.setFont(G2.getFont().deriveFont(Font.BOLD,20f));
+        text = "Start";
         x = getXforCenteredText(text);
-        y += gp.tileSize * 1;
+        y += gp.tileSize - 10;
         G2.drawString(text,x,y);
         if(commandNumber == 0)
         {
             G2.drawString(">",x - gp.tileSize,y);
         }
-        G2.setFont(G2.getFont().deriveFont(Font.BOLD,36f));
-        text = "LOAD GAME";
-        x = getXforCenteredText(text);
-        y += gp.tileSize;
+
+        G2.setFont(G2.getFont().deriveFont(Font.BOLD,20f));
+        text = "How to play?";
+        x = getXforCenteredText(text) + 1;
+        y += gp.tileSize - 15;
         G2.drawString(text,x,y);
         if(commandNumber == 1)
         {
             G2.drawString(">",x - gp.tileSize,y);
         }
-        G2.setFont(G2.getFont().deriveFont(Font.BOLD,36f));
-        text = "QUIT";
+//        G2.setFont(G2.getFont().deriveFont(Font.BOLD,20f));
+//        text = "LOAD GAME";
+//        x = getXforCenteredText(text);
+//        y += gp.tileSize - 15;
+//        G2.drawString(text,x,y);
+//        if(commandNumber == 1)
+//        {
+//            G2.drawString(">",x - gp.tileSize,y);
+//        }
+
+        G2.setFont(G2.getFont().deriveFont(Font.BOLD,20f));
+        text = "Music";
         x = getXforCenteredText(text);
-        y += gp.tileSize;
+        y += gp.tileSize - 15;
         G2.drawString(text,x,y);
         if(commandNumber == 2)
         {
             G2.drawString(">",x - gp.tileSize,y);
         }
 
-        G2.setFont(G2.getFont().deriveFont(Font.BOLD,36f));
-        text = "SOUND ON";
+//        G2.setFont(G2.getFont().deriveFont(Font.BOLD,20f));
+//        text = "Music off";
+//        x = getXforCenteredText(text);
+//        y += gp.tileSize - 15;
+//        G2.drawString(text,x,y);
+//        if(commandNumber == 4)
+//        {
+//            G2.drawString(">",x - gp.tileSize,y);
+//        }
+
+
+        G2.setFont(G2.getFont().deriveFont(Font.BOLD,20f));
+        text = "Quit";
         x = getXforCenteredText(text);
-        y += gp.tileSize;
+        y += gp.tileSize - 15;
         G2.drawString(text,x,y);
         if(commandNumber == 3)
         {
             G2.drawString(">",x - gp.tileSize,y);
         }
 
-        G2.setFont(G2.getFont().deriveFont(Font.BOLD,36f));
-        text = "SOUND OFF";
-        x = getXforCenteredText(text);
-        y += gp.tileSize;
-        G2.drawString(text,x,y);
-        if(commandNumber == 4)
-        {
-            G2.drawString(">",x - gp.tileSize,y);
-        }
 
-        G2.setFont(G2.getFont().deriveFont(Font.BOLD,36f));
-        text = "HOW TO PLAY MISCHIEF MANAGED?";
-        x = getXforCenteredText(text) + 1;
-        y += gp.tileSize;
-        G2.drawString(text,x,y);
-        if(commandNumber == 5)
-        {
-            G2.drawString(">",x - gp.tileSize,y);
-        }
+
+
     }
     public void drawPauseScreen()
     {
-        String text = "PAUSED";
-        int x = getXforCenteredText(text);
-        int y = gp.screenHeight/2;
+        String text = "Paused";
+        int x = gp.screenWidth/9 - 60;
+        int y = gp.screenHeight/6 -55;
+        G2.setFont(G2.getFont().deriveFont(Font.PLAIN,30f));
         G2.drawString(text,x,y);
     }
 //    public void drawDialogueScreen()

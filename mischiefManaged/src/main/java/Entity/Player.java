@@ -128,7 +128,12 @@ public class Player extends Entity
                     spriteNumber = 1;
                 }
                 spriteCounter = 0;
+            }
+
+
         }
+        else {
+            direction = "down";
         }
     }
 public void pickUpObject(int i)

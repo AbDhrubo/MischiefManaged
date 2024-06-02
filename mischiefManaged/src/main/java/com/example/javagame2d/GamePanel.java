@@ -21,8 +21,10 @@ public class GamePanel extends JPanel implements Runnable{
     public int maxWorldRow = 19;
     public final int  maxMap = 10;
     public int currentMap = 0;
+
+
     int FPS = 60;
-    tileManager tileM = new tileManager(this);
+    public tileManager tileM = new tileManager(this);
     public KeyHandler keyH = new KeyHandler(this);
     Sound sound = new Sound();
     public UI ui = new UI(this);
