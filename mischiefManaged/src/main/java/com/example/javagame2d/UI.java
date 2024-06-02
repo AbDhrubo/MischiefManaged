@@ -1,7 +1,11 @@
 package com.example.javagame2d;
 
+import javafx.scene.effect.DropShadow;
+
 import javax.imageio.ImageIO;
+import javax.swing.*;
 import java.awt.*;
+import java.awt.geom.AffineTransform;
 import java.awt.image.BufferedImage;
 import java.io.IOException;
 import java.lang.reflect.Array;
@@ -28,12 +32,12 @@ public class UI {
 
     public UI(GamePanel gp) throws IOException {
         this.gp = gp;
-        arial_40 = new Font("Ar",Font.PLAIN,40);
+        arial_40 = new Font("Arial",Font.PLAIN,40);
         arial_80B = new Font("Arial",Font.BOLD,80);
 
         this.dialogueImages = new ArrayList<>();
 
-        for(int i = 0; i<3; i++){
+        for(int i = 0; i<4; i++){
             System.out.println(STR."/models/\{i}.png");
             BufferedImage temp = ImageIO.read(Objects.requireNonNull(getClass().getResource(STR."/models/\{i}.png")));
             dialogueImages.add(temp);
@@ -133,32 +137,56 @@ public class UI {
         } catch (IOException e) {
             e.printStackTrace();
         }
-        G2.drawImage(bgImage,gp.tileSize/64 - 150  ,gp.tileSize/64,null);
+        G2.drawImage(bgImage,gp.tileSize/64 - 150  ,gp.tileSize/64, null);
         G2.setFont(G2.getFont().deriveFont(Font.BOLD,33));
         String text = "Mischief Managed!";
         int x = getXforCenteredText(text);
-        int y = gp.tileSize * 7;
-        G2.setColor(Color.white);
+        int y = gp.tileSize * 1;
+
+        Color shadowColor = new Color(50, 50, 50, 150); // semi-transparent black
+        int shadowOffset = 5;
+
+        // Draw shadow
+        G2.setColor(shadowColor);
+        G2.drawString(text, x + shadowOffset, y + shadowOffset);
+
+        GradientPaint gradient = new GradientPaint(x, y, Color.RED, x + 100, y, Color.BLUE);
+
+        // Set gradient paint
+        G2.setPaint(gradient);
+
+        G2.setColor(Color.WHITE);
         G2.drawString(text,x,y);
+//        AffineTransform originalTransform = G2.getTransform();
+//        AffineTransform rotateTransform = new AffineTransform();
+//        rotateTransform.rotate(Math.toRadians(60), x, y);
+//
+//        // Apply rotation
+//        G2.setTransform(rotateTransform);
+//        G2.drawString(text, x, y);
+//
+//        // Restore original transform
+//        G2.setTransform(originalTransform);
 
         G2.setFont(G2.getFont().deriveFont(Font.BOLD,20f));
         text = "Start";
-        x = getXforCenteredText(text);
-        y += gp.tileSize - 10;
+        x = 30;
+        y += gp.tileSize + 10;
         G2.drawString(text,x,y);
         if(commandNumber == 0)
         {
-            G2.drawString(">",x - gp.tileSize,y);
+            G2.drawImage(dialogueImages.get(3), x + gp.tileSize, y - 18, null, null);
+            //G2.drawString(">",x - gp.tileSize,y);
         }
 
         G2.setFont(G2.getFont().deriveFont(Font.BOLD,20f));
         text = "How to play?";
-        x = getXforCenteredText(text) + 1;
+        x = 30;
         y += gp.tileSize - 15;
         G2.drawString(text,x,y);
         if(commandNumber == 1)
         {
-            G2.drawString(">",x - gp.tileSize,y);
+            G2.drawImage(dialogueImages.get(3), x + 2*gp.tileSize + 25, y - 18, null, null);
         }
 //        G2.setFont(G2.getFont().deriveFont(Font.BOLD,20f));
 //        text = "LOAD GAME";
@@ -172,12 +200,12 @@ public class UI {
 
         G2.setFont(G2.getFont().deriveFont(Font.BOLD,20f));
         text = "Music";
-        x = getXforCenteredText(text);
+        x = 30;
         y += gp.tileSize - 15;
         G2.drawString(text,x,y);
         if(commandNumber == 2)
         {
-            G2.drawString(">",x - gp.tileSize,y);
+            G2.drawImage(dialogueImages.get(3), x + gp.tileSize + 10, y - 18, null, null);
         }
 
 //        G2.setFont(G2.getFont().deriveFont(Font.BOLD,20f));
@@ -193,12 +221,12 @@ public class UI {
 
         G2.setFont(G2.getFont().deriveFont(Font.BOLD,20f));
         text = "Quit";
-        x = getXforCenteredText(text);
+        x = 30;
         y += gp.tileSize - 15;
         G2.drawString(text,x,y);
         if(commandNumber == 3)
         {
-            G2.drawString(">",x - gp.tileSize,y);
+            G2.drawImage(dialogueImages.get(3), x + gp.tileSize - 6, y - 18, null, null);
         }
 
 
