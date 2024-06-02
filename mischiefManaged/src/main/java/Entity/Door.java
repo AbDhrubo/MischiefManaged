@@ -31,7 +31,7 @@ public class Door extends Entity{
 
     public void setDialogue()
     {
-        dialogues[0] = "Keo Ashche";
+        dialogues[0] = "May I have a sit?";
     }
     public void setAction()
     {
@@ -67,9 +67,9 @@ public class Door extends Entity{
 
         if (gp.player.stage == 0) dialogueIndex = 0;
         dialogue = false;
-
         gp.player.stage = 1;
         gp.ui.currentDialogue = dialogues[dialogueIndex];
+        gp.aSetter.setTempoNPC();
 
     }
 }

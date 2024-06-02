@@ -8,8 +8,8 @@ import java.awt.image.BufferedImage;
 import java.io.IOException;
 import java.util.Random;
 
-public class NPC_OldMan extends Entity{
-    public NPC_OldMan(GamePanel gp)
+public class Mystery_Man extends Entity{
+    public Mystery_Man(GamePanel gp)
     {
         super(gp);
         direction = "down";
@@ -31,10 +31,8 @@ public class NPC_OldMan extends Entity{
 
     public void setDialogue()
     {
-        dialogues[0] = "Someone's at the door";
-        dialogues[1] = "Who is he?";
-        dialogues[2] = "You should tell Feluda";
-        dialogues[3] = "Why don't you check it out yourself?";
+        dialogues[0] = "Is Prodosh Mittir home?";
+        dialogues[1] = "Take this map I must go";
     }
     public void setAction()
     {
@@ -67,22 +65,16 @@ public class NPC_OldMan extends Entity{
     }
     public void speak()
     {
-        if(gp.player.stage == 0)
+        if(gp.player.stage == 1)
         {
             dialogueIndex = 0;
+            gp.player.stage = 2;
         }
-        else if(gp.player.stage < 3)
+        if(gp.player.stage == 2)
         {
             dialogueIndex = 1;
-        }
-        else if(gp.player.stage == 3)
-        {
-            dialogueIndex = 2;
-            gp.npc[2].dialogue = true;
-        }
-        else if(gp.player.stage == 4)
-        {
-            dialogueIndex = 3;
+            gp.player.stage = 3;
+            gp.temponpc[0] = null;
         }
 
         gp.ui.currentDialogue = dialogues[dialogueIndex];
@@ -102,4 +94,4 @@ public class NPC_OldMan extends Entity{
                 break;
         }
     }
-    }
+}

@@ -93,6 +93,8 @@ public class Player extends Entity
             pickUpObject(objIndex);
             int npcIndex = gp.cChecker.checkEntity(this,gp.npc);
             interactNPC(npcIndex);
+            int temponpcIndex = gp.cChecker.checkEntity(this,gp.temponpc);
+            interactTempoNPC(temponpcIndex);
             if(collisionOn == false)
             {
                 switch(direction)
@@ -172,6 +174,19 @@ public void interactNPC(int i)
     }
     gp.keyH.enterPressed = false;
 }
+
+    public void interactTempoNPC(int i)
+    {
+        if(i != 999)
+        {
+            if(gp.temponpc[i].dialogue)
+            {
+                gp.gameState = gp.dialogueState;
+                gp.temponpc[i].speak();
+            }
+        }
+        gp.keyH.enterPressed = false;
+    }
     public void draw(Graphics2D G2)
     {
         //G2.setColor(Color.white);
