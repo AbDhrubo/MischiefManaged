@@ -11,45 +11,41 @@ public class Sound {
     URL soundURL[] = new URL[30];
 
     public Sound() {
-        soundURL[0] = getClass().getResource("/Sound/gourab-das-harmonica_feluda-theme-titan-mozart-s-symphony-no-25-shuffle-rhythm-gourab-das-harmonica.wav");
-        soundURL[1] = getClass().getResource("/Sound/gourab-das-harmonica_feluda-theme-titan-mozart-s-symphony-no-25-shuffle-rhythm-gourab-das-harmonica.wav");
-        soundURL[2] = getClass().getResource("/Sound/gourab-das-harmonica_feluda-theme-titan-mozart-s-symphony-no-25-shuffle-rhythm-gourab-das-harmonica.wav");
-        soundURL[3] = getClass().getResource("/Sound/gourab-das-harmonica_feluda-theme-titan-mozart-s-symphony-no-25-shuffle-rhythm-gourab-das-harmonica.wav");
-        soundURL[4] = getClass().getResource("/Sound/gourab-das-harmonica_feluda-theme-titan-mozart-s-symphony-no-25-shuffle-rhythm-gourab-das-harmonica.wav");
+        soundURL[0] = getClass().getResource(
+                "/Sound/gourab-das-harmonica_feluda-theme-titan-mozart-s-symphony-no-25-shuffle-rhythm-gourab-das-harmonica.wav");
+        soundURL[1] = getClass().getResource(
+                "/Sound/gourab-das-harmonica_feluda-theme-titan-mozart-s-symphony-no-25-shuffle-rhythm-gourab-das-harmonica.wav");
+        soundURL[2] = getClass().getResource(
+                "/Sound/gourab-das-harmonica_feluda-theme-titan-mozart-s-symphony-no-25-shuffle-rhythm-gourab-das-harmonica.wav");
+        soundURL[3] = getClass().getResource(
+                "/Sound/gourab-das-harmonica_feluda-theme-titan-mozart-s-symphony-no-25-shuffle-rhythm-gourab-das-harmonica.wav");
+        soundURL[4] = getClass().getResource(
+                "/Sound/gourab-das-harmonica_feluda-theme-titan-mozart-s-symphony-no-25-shuffle-rhythm-gourab-das-harmonica.wav");
     }
 
-    public void setFile(int i)
-    {
-        try
-        {
+    public void setFile(int i) {
+        try {
             AudioInputStream ais = AudioSystem.getAudioInputStream(soundURL[i]);
             clip = AudioSystem.getClip();
             clip.open(ais);
         }
 
-        catch (Exception e)
-        {
+        catch (Exception e) {
 
         }
     }
 
-    public void play()
-    {
+    public void play() {
         state = true;
         clip.start();
     }
 
-    public void loop()
-    {
+    public void loop() {
         clip.loop(Clip.LOOP_CONTINUOUSLY);
     }
-    public void stop()
-    {
+
+    public void stop() {
         state = false;
         clip.stop();
     }
 }
-
-
-
-

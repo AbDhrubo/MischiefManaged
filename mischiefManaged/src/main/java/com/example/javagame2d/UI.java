@@ -1,7 +1,11 @@
 package com.example.javagame2d;
 
+import javafx.scene.effect.DropShadow;
+
 import javax.imageio.ImageIO;
+import javax.swing.*;
 import java.awt.*;
+import java.awt.geom.AffineTransform;
 import java.awt.image.BufferedImage;
 import java.io.IOException;
 import java.lang.reflect.Array;
@@ -42,7 +46,7 @@ public class UI {
         this.storyLines = new ArrayList<>();
         initiateStory();
 
-        for(int i = 0; i<3; i++){
+        for(int i = 0; i<4; i++){
             System.out.println(STR."/models/\{i}.png");
             BufferedImage temp = ImageIO.read(Objects.requireNonNull(getClass().getResource(STR."/models/\{i}.png")));
             dialogueImages.add(temp);
@@ -175,77 +179,108 @@ public class UI {
         } catch (IOException e) {
             e.printStackTrace();
         }
-        G2.drawImage(bgImage,gp.tileSize/64 - 150  ,gp.tileSize/64,null);
-        G2.setFont(G2.getFont().deriveFont(Font.BOLD,64));
+        G2.drawImage(bgImage,gp.tileSize/64 - 150  ,gp.tileSize/64, null);
+        G2.setFont(G2.getFont().deriveFont(Font.BOLD,33));
         String text = "Mischief Managed!";
         int x = getXforCenteredText(text);
-        int y = gp.tileSize * 5;
-        G2.setColor(Color.white);
-        G2.drawString(text,x,y);
+        int y = gp.tileSize * 1;
 
-        G2.setFont(G2.getFont().deriveFont(Font.BOLD,36f));
-        text = "NEW GAME";
-        x = getXforCenteredText(text);
-        y += gp.tileSize * 1;
+        Color shadowColor = new Color(50, 50, 50, 150); // semi-transparent black
+        int shadowOffset = 5;
+
+        // Draw shadow
+        G2.setColor(shadowColor);
+        G2.drawString(text, x + shadowOffset, y + shadowOffset);
+
+        GradientPaint gradient = new GradientPaint(x, y, Color.RED, x + 100, y, Color.BLUE);
+
+        // Set gradient paint
+        G2.setPaint(gradient);
+
+        G2.setColor(Color.WHITE);
+        G2.drawString(text,x,y);
+//        AffineTransform originalTransform = G2.getTransform();
+//        AffineTransform rotateTransform = new AffineTransform();
+//        rotateTransform.rotate(Math.toRadians(60), x, y);
+//
+//        // Apply rotation
+//        G2.setTransform(rotateTransform);
+//        G2.drawString(text, x, y);
+//
+//        // Restore original transform
+//        G2.setTransform(originalTransform);
+
+        G2.setFont(G2.getFont().deriveFont(Font.BOLD,20f));
+        text = "Start";
+        x = 30;
+        y += gp.tileSize + 10;
         G2.drawString(text,x,y);
         if(commandNumber == 0)
         {
-            G2.drawString(">",x - gp.tileSize,y);
+            G2.drawImage(dialogueImages.get(3), x + gp.tileSize, y - 18, null, null);
+            //G2.drawString(">",x - gp.tileSize,y);
         }
-        G2.setFont(G2.getFont().deriveFont(Font.BOLD,36f));
-        text = "LOAD GAME";
-        x = getXforCenteredText(text);
-        y += gp.tileSize;
+
+        G2.setFont(G2.getFont().deriveFont(Font.BOLD,20f));
+        text = "How to play?";
+        x = 30;
+        y += gp.tileSize - 15;
         G2.drawString(text,x,y);
         if(commandNumber == 1)
         {
-            G2.drawString(">",x - gp.tileSize,y);
+            G2.drawImage(dialogueImages.get(3), x + 2*gp.tileSize + 25, y - 18, null, null);
         }
-        G2.setFont(G2.getFont().deriveFont(Font.BOLD,36f));
-        text = "QUIT";
-        x = getXforCenteredText(text);
-        y += gp.tileSize;
+//        G2.setFont(G2.getFont().deriveFont(Font.BOLD,20f));
+//        text = "LOAD GAME";
+//        x = getXforCenteredText(text);
+//        y += gp.tileSize - 15;
+//        G2.drawString(text,x,y);
+//        if(commandNumber == 1)
+//        {
+//            G2.drawString(">",x - gp.tileSize,y);
+//        }
+
+        G2.setFont(G2.getFont().deriveFont(Font.BOLD,20f));
+        text = "Music";
+        x = 30;
+        y += gp.tileSize - 15;
         G2.drawString(text,x,y);
         if(commandNumber == 2)
         {
-            G2.drawString(">",x - gp.tileSize,y);
+            G2.drawImage(dialogueImages.get(3), x + gp.tileSize + 10, y - 18, null, null);
         }
 
-        G2.setFont(G2.getFont().deriveFont(Font.BOLD,36f));
-        text = "SOUND ON";
-        x = getXforCenteredText(text);
-        y += gp.tileSize;
+//        G2.setFont(G2.getFont().deriveFont(Font.BOLD,20f));
+//        text = "Music off";
+//        x = getXforCenteredText(text);
+//        y += gp.tileSize - 15;
+//        G2.drawString(text,x,y);
+//        if(commandNumber == 4)
+//        {
+//            G2.drawString(">",x - gp.tileSize,y);
+//        }
+
+
+        G2.setFont(G2.getFont().deriveFont(Font.BOLD,20f));
+        text = "Quit";
+        x = 30;
+        y += gp.tileSize - 15;
         G2.drawString(text,x,y);
         if(commandNumber == 3)
         {
-            G2.drawString(">",x - gp.tileSize,y);
+            G2.drawImage(dialogueImages.get(3), x + gp.tileSize - 6, y - 18, null, null);
         }
 
-        G2.setFont(G2.getFont().deriveFont(Font.BOLD,36f));
-        text = "SOUND OFF";
-        x = getXforCenteredText(text);
-        y += gp.tileSize;
-        G2.drawString(text,x,y);
-        if(commandNumber == 4)
-        {
-            G2.drawString(">",x - gp.tileSize,y);
-        }
 
-        G2.setFont(G2.getFont().deriveFont(Font.BOLD,36f));
-        text = "HOW TO PLAY MISCHIEF MANAGED?";
-        x = getXforCenteredText(text) + 1;
-        y += gp.tileSize;
-        G2.drawString(text,x,y);
-        if(commandNumber == 5)
-        {
-            G2.drawString(">",x - gp.tileSize,y);
-        }
+
+
     }
     public void drawPauseScreen()
     {
-        String text = "PAUSED";
-        int x = getXforCenteredText(text);
-        int y = gp.screenHeight/2;
+        String text = "Paused";
+        int x = gp.screenWidth/9 - 60;
+        int y = gp.screenHeight/6 -55;
+        G2.setFont(G2.getFont().deriveFont(Font.PLAIN,30f));
         G2.drawString(text,x,y);
     }
     public void drawStoryScreen() throws IOException {

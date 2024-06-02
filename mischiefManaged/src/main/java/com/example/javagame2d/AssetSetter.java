@@ -87,7 +87,7 @@ public class AssetSetter {
     {
         int mapNum = 0;
         gp.temponpc[mapNum][0] = new Mystery_Man(gp);
-        gp.temponpc[mapNum][0].worldX = gp.tileSize*19;
+        gp.temponpc[mapNum][0].worldX = gp.tileSize*16;
         gp.temponpc[mapNum][0].worldY = gp.tileSize*4;
 
     }

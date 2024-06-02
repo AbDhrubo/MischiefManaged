@@ -24,9 +24,11 @@ public class GamePanel extends JPanel implements Runnable{
     public int maxWorldCol = 24;
     public int maxWorldRow = 19;
     public final int  maxMap = 10;
-    public int currentMap;
+    public int currentMap = 0;
+
+
     int FPS = 60;
-    tileManager tileM = new tileManager(this);
+    public tileManager tileM = new tileManager(this);
     public KeyHandler keyH = new KeyHandler(this);
     Sound sound = new Sound();
     public UI ui = new UI(this);
@@ -45,7 +47,7 @@ public class GamePanel extends JPanel implements Runnable{
 
     public final int titleState = 0;
     public int gameState;
-    public final int playState = 1;
+    public int playState = 1;
     public final int pauseState = 2;
     public final int dialogueState = 3;
     public final int storyState = 4;
