@@ -86,6 +86,8 @@ public class NPC_OldMan extends Entity{
         }
 
         gp.ui.currentDialogue = dialogues[dialogueIndex];
+        gp.ui.dialogueImage = gp.ui.dialogueImages.get(2);
+
         switch (gp.player.direction)
         {
             case "up":
