@@ -31,8 +31,13 @@ public class GamePanel extends JPanel implements Runnable{
     public EventHandler eHandler = new EventHandler(this);
     Thread gameThread;
     public Player player = new Player(this,keyH);
+
     public SuperObject obj[][] = new SuperObject[maxMap][10];
     public Entity npc[][] = new Entity[maxMap][10];
+
+
+    public Entity temponpc[][] = new Entity[maxMap][5];
+
     public final int titleState = 0;
     public int gameState;
     public final int playState = 1;
@@ -51,6 +56,7 @@ public class GamePanel extends JPanel implements Runnable{
     {
         //aSetter.setObject();
         aSetter.setNPC();
+        //aSetter.setTempoNPC();
         //playMusic(0);
         gameState = titleState;
     }
@@ -107,6 +113,13 @@ public class GamePanel extends JPanel implements Runnable{
                     npc[currentMap][i].update();
                 }
             }
+            for(int i = 0;i < temponpc[this.currentMap].length;i++)
+            {
+                if(temponpc[currentMap][i] != null)
+                {
+                    temponpc[currentMap][i].update();
+                }
+            }
         }
         if(gameState == pauseState)
         {
@@ -143,6 +156,13 @@ public class GamePanel extends JPanel implements Runnable{
                 if(npc[currentMap][i] != null)
                 {
                     npc[currentMap][i].draw(G2);
+                }
+            }
+            for(int i = 0;i < temponpc[this.currentMap].length;i++)
+            {
+                if(temponpc[currentMap][i] != null)
+                {
+                    temponpc[currentMap][i].draw(G2);
                 }
             }
             player.draw(G2);

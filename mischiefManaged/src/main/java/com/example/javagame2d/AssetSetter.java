@@ -1,7 +1,9 @@
 package com.example.javagame2d;
 
 import Entity.Door;
+import Entity.Mystery_Man;
 import Entity.NPC_OldMan;
+import Entity.Telephone;
 import objects.OBJ_Boots;
 import objects.OBJ_Chest;
 import objects.OBJ_Door;
@@ -67,8 +69,26 @@ public class AssetSetter {
         gp.npc[mapNum][0].worldX = gp.tileSize*15;
         gp.npc[mapNum][0].worldY = gp.tileSize*10;
 
+
         gp.npc[mapNum][1] = new Door(gp);
         gp.npc[mapNum][1].worldX = gp.tileSize*18;
         gp.npc[mapNum][1].worldY = gp.tileSize*2;
+
+        gp.npc[mapNum][1] = new Door(gp);
+        gp.npc[mapNum][1].worldX = gp.tileSize*18;
+        gp.npc[mapNum][1].worldY = gp.tileSize*2;
+
+        gp.npc[mapNum][2] = new Telephone(gp);
+        gp.npc[mapNum][2].worldX = gp.tileSize*9;
+        gp.npc[mapNum][2].worldY = gp.tileSize*7;
+    }
+
+    public void setTempoNPC()
+    {
+        int mapNum = 0;
+        gp.temponpc[mapNum][0] = new Mystery_Man(gp);
+        gp.temponpc[mapNum][0].worldX = gp.tileSize*19;
+        gp.temponpc[mapNum][0].worldY = gp.tileSize*4;
+
     }
 }

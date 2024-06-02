@@ -32,7 +32,9 @@ public class NPC_OldMan extends Entity{
     public void setDialogue()
     {
         dialogues[0] = "Someone's at the door";
-        dialogues[1] = "You should tell \nyour uncle about this";
+        dialogues[1] = "Who is he?";
+        dialogues[2] = "You should tell Feluda";
+        dialogues[3] = "Why don't you check it out yourself?";
     }
     public void setAction()
     {
@@ -65,8 +67,23 @@ public class NPC_OldMan extends Entity{
     }
     public void speak()
     {
-        if(gp.player.stage == 0) dialogueIndex = 0;
-        else if(gp.player.stage == 1) dialogueIndex = 1;
+        if(gp.player.stage == 0)
+        {
+            dialogueIndex = 0;
+        }
+        else if(gp.player.stage < 3)
+        {
+            dialogueIndex = 1;
+        }
+        else if(gp.player.stage == 3)
+        {
+            dialogueIndex = 2;
+            gp.npc[gp.currentMap][2].dialogue = true;
+        }
+        else if(gp.player.stage == 4)
+        {
+            dialogueIndex = 3;
+        }
 
         gp.ui.currentDialogue = dialogues[dialogueIndex];
         switch (gp.player.direction)
