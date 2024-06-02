@@ -18,10 +18,16 @@ public class UI {
     public String message = "";
     int messageCounter = 0;
     public boolean gameFinished = false;
-    public String currentDialogue = "";
+    public String currentDialogue = "ekti bhari mojar golpo";
     public BufferedImage dialogueImage = ImageIO.read(Objects.requireNonNull(getClass().getResource("/NPC/oldman_right_1.png")));
+    public BufferedImage arrowImage = ImageIO.read(Objects.requireNonNull(getClass().getResource("/misc/rightArrow.png")));
+    public BufferedImage enterImage = ImageIO.read(Objects.requireNonNull(getClass().getResource("/misc/enter.png")));
     public BufferedImage nullImage = ImageIO.read(Objects.requireNonNull(getClass().getResource("/NPC/oldman_right_1.png")));
     public ArrayList<BufferedImage> dialogueImages;
+    public ArrayList<BufferedImage> storyImages;
+
+    public ArrayList<String> storyLines;;
+    public int storyIndex = 0;
     public int commandNumber = 0;
     double playTime;
     DecimalFormat dFormat = new DecimalFormat("#0.00");
@@ -32,6 +38,9 @@ public class UI {
         arial_80B = new Font("Arial",Font.BOLD,80);
 
         this.dialogueImages = new ArrayList<>();
+        this.storyImages = new ArrayList<>();
+        this.storyLines = new ArrayList<>();
+        initiateStory();
 
         for(int i = 0; i<3; i++){
             System.out.println(STR."/models/\{i}.png");
@@ -42,14 +51,44 @@ public class UI {
         //keyImage = key.image;
     }
 
+    private void initiateStory() throws IOException {
+        storyLines.add("কলকাতার গরমের মধ্যে এক ব্যস্ত ক্লান্ত দুপুর, ফেলুদা বাসায় নেই।");
+        storyLines.add("বাদশাহী আংটির কেসের পর থেকে ফেলুদা অনেক ব্যস্ত হয়ে পড়েছে।");
+        storyLines.add("তপসে আর জটায়ু পায়চারি করছি বাড়িতে।");
+        storyLines.add("হুট করে বেজে ওঠে ডিং ডং!");
+        storyLines.add("লোকটা কি রকম অদ্ভুত! শুধু ফাইলটা দিয়েই চলে গেলো!");
+        storyLines.add("ফাইলে ছিল কিছু কাগজ, সাথে একটা ম্যাপ। ভাঁজ খুলতেই দেখি, কলকাতার ম্যাপ।");
+        storyLines.add("খুবই জীর্ণশীর্ণ, কিন্তু দেখা যায় পার্কস্ট্রিট, ভিক্টোরিয়া মেমোরিয়াল আর…।");
+        storyLines.add("শোভাবাজারে দাগ দেয়া?পুতুলবাড়িতে?কি আছে ওখানে?");
+        storyLines.add("হুট করে বেজে ওঠে ক্রিং ক্রিং ক্রিং…");
+        storyLines.add("হুট করে বেজে ওঠে ক্রিং ক্রিং ক্রিং…");
+        storyLines.add("হুট করে বেজে ওঠে ক্রিং ক্রিং ক্রিং…");
+        storyLines.add("হুট করে বেজে ওঠে ক্রিং ক্রিং ক্রিং…");
+        storyLines.add("হুট করে বেজে ওঠে ক্রিং ক্রিং ক্রিং…");
+
+        BufferedImage temp0 = ImageIO.read(Objects.requireNonNull(getClass().getResource("/models/0.png")));
+        BufferedImage temp1 = ImageIO.read(Objects.requireNonNull(getClass().getResource("/models/1.png")));
+        BufferedImage temp2 = ImageIO.read(Objects.requireNonNull(getClass().getResource("/models/2.png")));
+        BufferedImage temp3 = ImageIO.read(Objects.requireNonNull(getClass().getResource("/models/4.png")));
+
+        storyImages.add(temp3);
+        storyImages.add(temp3);
+        storyImages.add(temp3);
+        storyImages.add(temp3);
+        storyImages.add(temp0);
+        storyImages.add(temp0);
+        storyImages.add(temp0);
+        storyImages.add(temp0);
+
+    }
+
     public void showMessage(String text)
     {
         message = text;
         messageOn = true;
     }
 
-    public void draw(Graphics2D G2)
-    {
+    public void draw(Graphics2D G2) throws IOException {
         this.G2 = G2;
         G2.setFont(arial_40);
         G2.setColor(Color.white);
@@ -69,6 +108,9 @@ public class UI {
         if(gp.gameState == gp.dialogueState)
         {
             drawDialogueScreen();
+        }
+        if(gp.gameState == gp.storyState){
+            drawStoryScreen();
         }
         /*if(gameFinished == true)
         {
@@ -206,45 +248,119 @@ public class UI {
         int y = gp.screenHeight/2;
         G2.drawString(text,x,y);
     }
-//    public void drawDialogueScreen()
-//    {
-//        int x = gp.tileSize;
-//        int y = gp.tileSize/2;
-//        int width = gp.screenWidth - (gp.tileSize * 4);
-//        int height = gp.tileSize * 4;
-//        drawSubWindow(x,y,width,height);
-//        x += gp.tileSize;
-//        y += gp.tileSize;
-//        G2.drawString(currentDialogue,x,y);
-//    }
-
-    public void drawDialogueScreen() {
-        int x = gp.tileSize;
-        int y = gp.tileSize / 2;
+    public void drawStoryScreen() throws IOException {
+        float x = gp.tileSize;
+        float y = gp.tileSize / 2;
         int width = gp.screenWidth - (gp.tileSize * 4);
         int height = gp.tileSize * 4;
-        drawSubWindow(x, y, width, height);
+        drawSubWindow((int)x, (int)y, width, height);
+        drawSubWindow((int)x + width - gp.tileSize*2, (int)y+height + gp.tileSize*2, gp.tileSize* 3, gp.tileSize*2);
+        G2.setFont(new Font("Arial", Font.PLAIN, 20));
+        G2.setColor(Color.WHITE); // Set the text color to white
+        G2.drawString("PRESS", (float)(x + width - (float)gp.tileSize*1.5), (int)y+height + gp.tileSize*3);
+
+        int imageWidth = 3 * dialogueImage.getWidth(null); // Note the 'null' parameter
+        int imageHeight = 3 * dialogueImage.getHeight(null);
+        int imageX = (int) (x + width - (float)gp.tileSize*2 + 20);
+        int imageY = (int)y+height + gp.tileSize*3;
+        G2.drawImage(arrowImage, imageX, imageY, imageWidth, imageHeight, null);
 
         // Adjust image position and size
-        int imageWidth  = 3* dialogueImage.getWidth();
-        int imageHeight = 3*dialogueImage.getHeight();
-        int imageX = x + gp.tileSize;
-        int imageY = y + gp.tileSize;
+
+        imageWidth = 3 * dialogueImage.getWidth(null); // Note the 'null' parameter
+        imageHeight = 3 * dialogueImage.getHeight(null);
+        imageX = (int) (x + gp.tileSize);
+        imageY = (int) (y + gp.tileSize);
+
+
+//        G2.drawImage(dialogueImage, imageX, imageY, imageWidth, imageHeight, null);
+        G2.drawImage(storyImages.get(gp.storyIndex), imageX, imageY, imageWidth, imageHeight, null);
+        x += (float) (gp.tileSize * 2);
+        y += (float) (gp.tileSize * 1.5);
+
+        G2.setFont(gp.banglaFont);
+        G2.setColor(Color.WHITE);
+        java.util.List<String> lines = getStrings(storyLines.get(gp.storyIndex));
+
+        // Draw each line
+        for (String l : lines) {
+            G2.drawString(l, x, y);
+            y += gp.tileSize; 
+        }
+
+
+        
+        
+    }
+
+    private java.util.List<String> getStrings(String s) {
+        String[] words = s.split(" ");
+        StringBuilder line = new StringBuilder();
+        java.util.List<String> lines = new ArrayList<>();
+
+        for (String word : words) {
+            if (line.length() + word.length() <= 40) {
+                if (line.length() > 0) {
+                    line.append(" ");
+                }
+                line.append(word);
+            } else {
+                lines.add(line.toString());
+                line = new StringBuilder(word);
+            }
+        }
+        lines.add(line.toString());
+        return lines;
+    }
+
+
+    public void drawDialogueScreen() {
+        float x = gp.tileSize;
+        float y = gp.tileSize / 2;
+        int width = gp.screenWidth - (gp.tileSize * 4);
+        int height = gp.tileSize * 4;
+        drawSubWindow((int)x, (int)y, width, height);
+        drawSubWindow((int)x + width - gp.tileSize*2, (int)y+height + gp.tileSize*2, gp.tileSize* 3, gp.tileSize*2);
+        G2.setFont(new Font("Arial", Font.PLAIN, 20));
+        G2.setColor(Color.WHITE); // Set the text color to white
+        G2.drawString("PRESS", (float)(x + width - (float)gp.tileSize*1.5), (int)y+height + gp.tileSize*3);
+
+        int imageWidth = 3 * dialogueImage.getWidth(null); // Note the 'null' parameter
+        int imageHeight = 3 * dialogueImage.getHeight(null);
+        int imageX = (int) (x + width - (float)gp.tileSize*2 + 20);
+        int imageY = (int)y+height + gp.tileSize*3;
+        G2.drawImage(enterImage, imageX, imageY, imageWidth, imageHeight, null);
+
+        // Adjust image position and size
+        imageWidth = 3 * dialogueImage.getWidth(null); // Note the 'null' parameter
+        imageHeight = 3 * dialogueImage.getHeight(null);
+        imageX = (int) (x + gp.tileSize);
+        imageY = (int) (y + gp.tileSize);
 
         G2.drawImage(dialogueImage, imageX, imageY, imageWidth, imageHeight, null);
 
-        // Adjust text position and set a smaller font
-        x += gp.tileSize*2;
-        y += gp.tileSize*2; // Move the text down below the image
+        // Adjust text position and set the custom Bengali font
+        x += (float) (gp.tileSize * 2);
+        y += (float) (gp.tileSize * 1.5); // Move the text down below the image
 
-        G2.setFont(new Font("Comic-sans", Font.PLAIN, 24)); // Set a smaller font size
+        G2.setFont(gp.banglaFont); // Set the custom Bengali font
         G2.setColor(Color.WHITE); // Set the text color to white
-        G2.drawString(currentDialogue, x, y);
+
+        // Split the text into lines of max 20 characters without breaking words
+        java.util.List<String> lines = getStrings(currentDialogue);
+
+        // Draw each line
+        for (String l : lines) {
+            G2.drawString(l, x, y);
+            y += gp.tileSize; // Move down for the next line
+        }
     }
 
 
     public void drawSubWindow(int x,int y, int width,int height)
     {
+        System.out.println(width);
+        System.out.println(height);
         Color c = new Color(0,0,0,210);
         G2.setColor(c);
         G2.fillRoundRect(x,y,width,height,35,35);
@@ -261,3 +377,5 @@ public class UI {
     }
 
 }
+
+

@@ -7,7 +7,11 @@ import objects.SuperObject;
 
 import javax.swing.*;
 import java.awt.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import java.io.File;
 import java.io.IOException;
+import java.util.ArrayList;
 
 public class GamePanel extends JPanel implements Runnable{
     final int originalTileSize = 16;
@@ -44,21 +48,42 @@ public class GamePanel extends JPanel implements Runnable{
     public final int playState = 1;
     public final int pauseState = 2;
     public final int dialogueState = 3;
-    public GamePanel() throws IOException {
+    public final int storyState = 4;
+    public int progressionState = 0;
+    public ArrayList<Integer> storyLevel = new ArrayList<>();
+    public int currLevel = 0;
+    public int storyIndex = 0;
+    public int dialogueLevel = 0;
+    private boolean showMessage = false;
+    private String message = "";
+    public Font banglaFont;
+
+    public GamePanel() throws IOException, FontFormatException {
         this.setPreferredSize(new Dimension(screenWidth, screenHeight));
         this.setBackground(Color.black);
         this.setDoubleBuffered(true);
         this.addKeyListener(keyH);
         this.setFocusable(true);
+        this.storyLevel.add(2);
+        this.storyLevel.add(2);
+        banglaFont = Font.createFont(Font.TRUETYPE_FONT, new File("res/fonts/bangla.ttf")).deriveFont(24f);
     }
 
-    public void setupGame()
-    {
+    public void setupGame() {
         //aSetter.setObject();
         aSetter.setNPC();
         //aSetter.setTempoNPC();
         //playMusic(0);
         gameState = titleState;
+
+        Timer messageTimer = new Timer(2000, new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                showMessage = true;
+            }
+        });
+        messageTimer.setRepeats(false);
+        messageTimer.start();
     }
     public void startGameThread()
     {
@@ -83,7 +108,11 @@ public class GamePanel extends JPanel implements Runnable{
             lastTime = currentTime;
             if(delta >= 1)
             {
-                update();
+                try {
+                    update();
+                } catch (IOException e) {
+                    throw new RuntimeException(e);
+                }
 
                 repaint();
 
@@ -101,80 +130,132 @@ public class GamePanel extends JPanel implements Runnable{
         }
     }
 
-    private void update()
-    {
-        if(gameState == playState)
-        {
+    private void update() throws IOException {
+        if (gameState == playState) {
+            handleEnterKey();
             player.update();
-            for(int i = 0;i < npc[this.currentMap].length;i++)
-            {
-                if(npc[currentMap][i] != null)
-                {
+            for (int i = 0; i < npc[this.currentMap].length; i++) {
+                if (npc[currentMap][i] != null) {
                     npc[currentMap][i].update();
                 }
             }
-            for(int i = 0;i < temponpc[this.currentMap].length;i++)
-            {
-                if(temponpc[currentMap][i] != null)
-                {
+            for (int i = 0; i < temponpc[this.currentMap].length; i++) {
+                if (temponpc[currentMap][i] != null) {
                     temponpc[currentMap][i].update();
                 }
             }
         }
-        if(gameState == pauseState)
-        {
+        if (gameState == pauseState) {
             ui.drawPauseScreen();
-            //ui.draw(ui.G2);
-
+        }
+        if(gameState == storyState){
+            System.out.println("gg");
+            ui.drawStoryScreen();
         }
     }
 
-    public void paintComponent(Graphics G)
-    {
+//    public void paintComponent(Graphics G)
+//    {
+//        super.paintComponent(G);
+//        Graphics2D G2 =  (Graphics2D)G;
+//        long drawStart = 0;
+//        if(keyH.checkDrawTime)
+//        {
+//            drawStart = System.nanoTime();
+//        }
+//        if(gameState == titleState)
+//        {
+//            ui.draw(G2);
+//        }
+//        else {
+//            tileM.draw(G2);
+//            for(int i = 0;i < obj[this.currentMap].length;i++)
+//            {
+//                if(obj[currentMap][i] != null)
+//                {
+//                    obj[currentMap][i].draw(G2,this);
+//                }
+//            }
+//            for(int i = 0;i < npc[currentMap].length;i++)
+//            {
+//                if(npc[currentMap][i] != null)
+//                {
+//                    npc[currentMap][i].draw(G2);
+//                }
+//            }
+//            for(int i = 0;i < temponpc[this.currentMap].length;i++)
+//            {
+//                if(temponpc[currentMap][i] != null)
+//                {
+//                    temponpc[currentMap][i].draw(G2);
+//                }
+//            }
+//            player.draw(G2);
+//            ui.draw(G2);
+//        }
+//
+//        if(keyH.checkDrawTime == true)
+//        {
+//            long drawEnd = System.nanoTime();
+//            long passed = drawEnd - drawStart;
+//            G2.setColor(Color.white);
+//            G2.drawString("Draw Time: " + passed,10,400);
+//            System.out.println("Draw Time: " + passed);
+//        }
+//
+//        G2.dispose();
+//    }
+
+    @Override
+    public void paintComponent(Graphics G) {
         super.paintComponent(G);
         Graphics2D G2 =  (Graphics2D)G;
         long drawStart = 0;
-        if(keyH.checkDrawTime)
-        {
+        if(keyH.checkDrawTime) {
             drawStart = System.nanoTime();
         }
-        if(gameState == titleState)
-        {
-            ui.draw(G2);
-        }
-        else {
+        if(gameState == titleState) {
+            try {
+                ui.draw(G2);
+            } catch (IOException e) {
+                throw new RuntimeException(e);
+            }
+        } else {
             tileM.draw(G2);
-            for(int i = 0;i < obj[this.currentMap].length;i++)
-            {
-                if(obj[currentMap][i] != null)
-                {
+            for(int i = 0;i < obj[this.currentMap].length;i++) {
+                if(obj[currentMap][i] != null) {
                     obj[currentMap][i].draw(G2,this);
                 }
             }
-            for(int i = 0;i < npc[currentMap].length;i++)
-            {
-                if(npc[currentMap][i] != null)
-                {
+            for(int i = 0;i < npc[currentMap].length;i++) {
+                if(npc[currentMap][i] != null) {
                     npc[currentMap][i].draw(G2);
                 }
             }
-            for(int i = 0;i < temponpc[this.currentMap].length;i++)
-            {
-                if(temponpc[currentMap][i] != null)
-                {
+            for(int i = 0;i < temponpc[this.currentMap].length;i++) {
+                if(temponpc[currentMap][i] != null) {
                     temponpc[currentMap][i].draw(G2);
                 }
             }
             player.draw(G2);
-            ui.draw(G2);
+            try {
+                ui.draw(G2);
+            } catch (IOException e) {
+                throw new RuntimeException(e);
+            }
+
+            if (showMessage) {
+                G2.setColor(Color.WHITE);
+                G2.setFont(new Font("Arial", Font.BOLD, 20));
+                G2.drawString(message, screenWidth / 2 - G2.getFontMetrics().stringWidth(message) / 2, screenHeight / 2);
+            }
         }
 
-        if(keyH.checkDrawTime == true)
-        {
+        if(keyH.checkDrawTime == true) {
             long drawEnd = System.nanoTime();
             long passed = drawEnd - drawStart;
             G2.setColor(Color.white);
-            G2.drawString("Draw Time: " + passed,10,400);
+            G2.drawString("Draw Time: " + passed, 10, 400);
             System.out.println("Draw Time: " + passed);
         }
 
@@ -197,5 +278,12 @@ public class GamePanel extends JPanel implements Runnable{
     {
     sound.setFile(i);
     sound.play();
+    }
+
+    private void handleEnterKey() {
+        if (keyH.enterPressed && showMessage) {
+            showMessage = false;
+            keyH.enterPressed = false; // Reset the flag
+        }
     }
 }

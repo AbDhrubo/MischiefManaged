@@ -31,7 +31,7 @@ public class Door extends Entity{
 
     public void setDialogue()
     {
-        dialogues[0] = "May I have a sit?";
+        dialogues[0] = "আসতে পারি?";
     }
     public void setAction()
     {

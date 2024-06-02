@@ -32,7 +32,7 @@ public class Mystery_Man extends Entity{
     public void setDialogue()
     {
         dialogues[0] = "Is Prodosh Mittir home?";
-        dialogues[1] = "Take this map I must go";
+        dialogues[1] = "এই ফাইলটা রাখুন তো! ফেলুবাবুকে দিবেন!";
     }
     public void setAction()
     {
@@ -73,6 +73,7 @@ public class Mystery_Man extends Entity{
         if(gp.player.stage == 2)
         {
             dialogueIndex = 1;
+            gp.dialogueLevel = 1;
             gp.player.stage = 3;
             gp.temponpc[gp.currentMap][0] = null;
         }

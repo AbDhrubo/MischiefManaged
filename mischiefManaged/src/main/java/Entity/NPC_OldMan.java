@@ -31,10 +31,10 @@ public class NPC_OldMan extends Entity{
 
     public void setDialogue()
     {
-        dialogues[0] = "Someone's at the door";
+        dialogues[0] = "দরজায় কেউ কড়া নাড়ছে!";
         dialogues[1] = "Who is he?";
-        dialogues[2] = "You should tell Feluda";
-        dialogues[3] = "Why don't you check it out yourself?";
+        dialogues[2] = "তুমি ঘটনাটা ফেলুবাবুকে বলো, ফোন করো।";
+        dialogues[3] = "তুমি তাহলে একবার গিয়ে দেখবে?";
     }
     public void setAction()
     {
