@@ -110,6 +110,17 @@ public class KeyHandler implements KeyListener {
         if(code == KeyEvent.VK_C)
         {
             gp.currentMap = 1;
+
+            gp.player.worldX = gp.tileSize * 3;
+            gp.player.worldY = gp.tileSize * 27;
+            gp.player.speed = 4;
+            gp.player.direction = "down";
+
+            gp.maxWorldCol = 40;
+            gp.maxWorldRow = 30;
+            gp.tileM.loadMap("/maps/level_2.txt",1);
+
+
         }
     }
 

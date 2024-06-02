@@ -41,10 +41,13 @@ public class Player extends Entity
 
     public void setDefaultValues()
     {
-        worldX = gp.tileSize * 13;
-        worldY = gp.tileSize * 10;
-        speed = 4;
-        direction = "down";
+        if(gp.currentMap == 0) {
+            worldX = gp.tileSize * 13;
+            worldY = gp.tileSize * 10;
+            speed = 4;
+            direction = "down";
+        }
+
     }
     public void getPlayerImage()
     {

@@ -26,7 +26,7 @@ public class CollisionChecker {
                 entityTopRow = (entityTopWorldY - entity.speed) / gp.tileSize;
                 tileNum1 = gp.tileM.mapTileNum[gp.currentMap][entityLeftCol][entityTopRow];
                 tileNum2 = gp.tileM.mapTileNum[gp.currentMap][entityRightCol][entityTopRow];
-                if ((gp.tileM.Tile[tileNum1].collision == true) || (gp.tileM.Tile[tileNum2].collision == true)) {
+                if ((gp.tileM.Tile[gp.currentMap][tileNum1].collision == true) || (gp.tileM.Tile[gp.currentMap][tileNum2].collision == true)) {
                     entity.collisionOn = true;
                 }
                 break;
@@ -34,7 +34,7 @@ public class CollisionChecker {
                 entityBottomRow = (entityBottomWorldY + entity.speed) / gp.tileSize;
                 tileNum1 = gp.tileM.mapTileNum[gp.currentMap][entityLeftCol][entityBottomRow];
                 tileNum2 = gp.tileM.mapTileNum[gp.currentMap][entityRightCol][entityBottomRow];
-                if ((gp.tileM.Tile[tileNum1].collision == true) || (gp.tileM.Tile[tileNum2].collision == true)) {
+                if ((gp.tileM.Tile[gp.currentMap][tileNum1].collision == true) || (gp.tileM.Tile[gp.currentMap][tileNum2].collision == true)) {
                     entity.collisionOn = true;
                 }
                 break;
@@ -42,7 +42,7 @@ public class CollisionChecker {
                 entityLeftCol = (entityLeftWorldX - entity.speed) / gp.tileSize;
                 tileNum1 = gp.tileM.mapTileNum[gp.currentMap][entityLeftCol][entityTopRow];
                 tileNum2 = gp.tileM.mapTileNum[gp.currentMap][entityLeftCol][entityBottomRow];
-                if ((gp.tileM.Tile[tileNum1].collision == true) || (gp.tileM.Tile[tileNum2].collision == true)) {
+                if ((gp.tileM.Tile[gp.currentMap][tileNum1].collision == true) || (gp.tileM.Tile[gp.currentMap][tileNum2].collision == true)) {
                     entity.collisionOn = true;
                 }
                 break;
@@ -50,7 +50,7 @@ public class CollisionChecker {
                 entityRightCol = (entityRightWorldX + entity.speed) / gp.tileSize;
                 tileNum1 = gp.tileM.mapTileNum[gp.currentMap][entityRightCol][entityTopRow];
                 tileNum2 = gp.tileM.mapTileNum[gp.currentMap][entityRightCol][entityBottomRow];
-                if ((gp.tileM.Tile[tileNum1].collision == true) || (gp.tileM.Tile[tileNum2].collision == true)) {
+                if ((gp.tileM.Tile[gp.currentMap][tileNum1].collision == true) || (gp.tileM.Tile[gp.currentMap][tileNum2].collision == true)) {
                     entity.collisionOn = true;
                 }
                 break;
