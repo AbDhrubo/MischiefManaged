@@ -44,6 +44,7 @@ public class KeyHandler implements KeyListener {
             if(gp.ui.commandNumber == 0)
             {
                 gp.gameState = gp.playState;
+                gp.currentMap = 0;
                 //gp.playMusic(0);
             }
             if(gp.ui.commandNumber == 2)
@@ -105,6 +106,10 @@ public class KeyHandler implements KeyListener {
             {
                 checkDrawTime = false;
             }
+        }
+        if(code == KeyEvent.VK_C)
+        {
+            gp.currentMap = 1;
         }
     }
 

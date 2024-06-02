@@ -164,10 +164,10 @@ public void interactNPC(int i)
 {
     if(i != 999)
     {
-        if(gp.npc[i].dialogue)
+        if(gp.npc[gp.currentMap][i].dialogue)
         {
             gp.gameState = gp.dialogueState;
-            gp.npc[i].speak();
+            gp.npc[gp.currentMap][i].speak();
         }
     }
     gp.keyH.enterPressed = false;
