@@ -1,12 +1,13 @@
 package com.example.javagame2d;
 
-import objects.OBJ_Key;
-
 import javax.imageio.ImageIO;
 import java.awt.*;
 import java.awt.image.BufferedImage;
 import java.io.IOException;
+import java.lang.reflect.Array;
 import java.text.DecimalFormat;
+import java.util.ArrayList;
+import java.util.Objects;
 
 public class UI {
     GamePanel gp;
@@ -18,15 +19,25 @@ public class UI {
     int messageCounter = 0;
     public boolean gameFinished = false;
     public String currentDialogue = "";
+    public BufferedImage dialogueImage = ImageIO.read(Objects.requireNonNull(getClass().getResource("/NPC/oldman_right_1.png")));
+    public BufferedImage nullImage = ImageIO.read(Objects.requireNonNull(getClass().getResource("/NPC/oldman_right_1.png")));
+    public ArrayList<BufferedImage> dialogueImages;
     public int commandNumber = 0;
     double playTime;
     DecimalFormat dFormat = new DecimalFormat("#0.00");
 
-    public UI(GamePanel gp)
-    {
+    public UI(GamePanel gp) throws IOException {
         this.gp = gp;
         arial_40 = new Font("Arial",Font.PLAIN,40);
         arial_80B = new Font("Arial",Font.BOLD,80);
+
+        this.dialogueImages = new ArrayList<>();
+
+        for(int i = 0; i<3; i++){
+            System.out.println(STR."/models/\{i}.png");
+            BufferedImage temp = ImageIO.read(Objects.requireNonNull(getClass().getResource(STR."/models/\{i}.png")));
+            dialogueImages.add(temp);
+        }
         //OBJ_Key key = new OBJ_Key(gp);
         //keyImage = key.image;
     }
@@ -195,17 +206,43 @@ public class UI {
         int y = gp.screenHeight/2;
         G2.drawString(text,x,y);
     }
-    public void drawDialogueScreen()
-    {
+//    public void drawDialogueScreen()
+//    {
+//        int x = gp.tileSize;
+//        int y = gp.tileSize/2;
+//        int width = gp.screenWidth - (gp.tileSize * 4);
+//        int height = gp.tileSize * 4;
+//        drawSubWindow(x,y,width,height);
+//        x += gp.tileSize;
+//        y += gp.tileSize;
+//        G2.drawString(currentDialogue,x,y);
+//    }
+
+    public void drawDialogueScreen() {
         int x = gp.tileSize;
-        int y = gp.tileSize/2;
+        int y = gp.tileSize / 2;
         int width = gp.screenWidth - (gp.tileSize * 4);
         int height = gp.tileSize * 4;
-        drawSubWindow(x,y,width,height);
-        x += gp.tileSize;
-        y += gp.tileSize;
-        G2.drawString(currentDialogue,x,y);
+        drawSubWindow(x, y, width, height);
+
+        // Adjust image position and size
+        int imageWidth  = 3* dialogueImage.getWidth();
+        int imageHeight = 3*dialogueImage.getHeight();
+        int imageX = x + gp.tileSize;
+        int imageY = y + gp.tileSize;
+
+        G2.drawImage(dialogueImage, imageX, imageY, imageWidth, imageHeight, null);
+
+        // Adjust text position and set a smaller font
+        x += gp.tileSize*2;
+        y += gp.tileSize*2; // Move the text down below the image
+
+        G2.setFont(new Font("Comic-sans", Font.PLAIN, 24)); // Set a smaller font size
+        G2.setColor(Color.WHITE); // Set the text color to white
+        G2.drawString(currentDialogue, x, y);
     }
+
+
     public void drawSubWindow(int x,int y, int width,int height)
     {
         Color c = new Color(0,0,0,210);

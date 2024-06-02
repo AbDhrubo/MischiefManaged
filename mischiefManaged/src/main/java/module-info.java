@@ -9,7 +9,7 @@ module com.example.javagame2d {
     requires org.kordamp.ikonli.javafx;
     requires org.kordamp.bootstrapfx.core;
     requires eu.hansolo.tilesfx;
-    requires com.almasb.fxgl.all;
+//    requires com.almasb.fxgl.all;
     requires java.desktop;
 
     opens com.example.javagame2d to javafx.fxml;

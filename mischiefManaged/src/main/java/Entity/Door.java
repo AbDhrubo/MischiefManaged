@@ -69,6 +69,7 @@ public class Door extends Entity{
         dialogue = false;
         gp.player.stage = 1;
         gp.ui.currentDialogue = dialogues[dialogueIndex];
+        gp.ui.dialogueImage = gp.ui.dialogueImages.get(2);
         gp.aSetter.setTempoNPC();
 
     }
