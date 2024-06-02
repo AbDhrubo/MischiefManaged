@@ -8,8 +8,8 @@ import java.awt.image.BufferedImage;
 import java.io.IOException;
 import java.util.Random;
 
-public class Door extends Entity{
-    public Door(GamePanel gp)
+public class Letter_box extends Entity{
+    public Letter_box(GamePanel gp)
     {
         super(gp);
         direction = "down";
@@ -31,7 +31,7 @@ public class Door extends Entity{
 
     public void setDialogue()
     {
-        dialogues[0] = "May I have a sit?";
+        dialogues[0] = "erpor tolowar er kache jabe";
     }
     public void setAction()
     {
@@ -65,32 +65,14 @@ public class Door extends Entity{
     public void speak()
     {
 
-        if (gp.player.stage == 0)
+        if (gp.player.stage == 5)
         {
             dialogueIndex = 0;
             dialogue = false;
-            gp.player.stage = 1;
+            gp.player.stage = 6;
             gp.ui.currentDialogue = dialogues[dialogueIndex];
-            gp.ui.dialogueImage = gp.ui.dialogueImages.get(2);
-            gp.aSetter.setTempoNPC();
+            //gp.ui.dialogueImage = gp.ui.dialogueImages.get(2);
         }
-        else if(gp.player.stage == 4)
-        {
-            gp.currentMap = 1;
-
-            gp.player.worldX = gp.tileSize * 3;
-            gp.player.worldY = gp.tileSize * 27;
-            gp.player.speed = 4;
-            gp.player.direction = "down";
-            gp.player.stage = 5;
-
-            gp.maxWorldCol = 40;
-            gp.maxWorldRow = 30;
-            gp.tileM.loadMap("/maps/level_2.txt",1);
-            gp.gameState = gp.playState;
-
-        }
-
 
     }
 }

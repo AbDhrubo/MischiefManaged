@@ -8,8 +8,8 @@ import java.awt.image.BufferedImage;
 import java.io.IOException;
 import java.util.Random;
 
-public class Door extends Entity{
-    public Door(GamePanel gp)
+public class Armour extends Entity{
+    public Armour(GamePanel gp)
     {
         super(gp);
         direction = "down";
@@ -31,7 +31,7 @@ public class Door extends Entity{
 
     public void setDialogue()
     {
-        dialogues[0] = "May I have a sit?";
+        dialogues[0] = "A hidden key! but for what";
     }
     public void setAction()
     {
@@ -82,7 +82,6 @@ public class Door extends Entity{
             gp.player.worldY = gp.tileSize * 27;
             gp.player.speed = 4;
             gp.player.direction = "down";
-            gp.player.stage = 5;
 
             gp.maxWorldCol = 40;
             gp.maxWorldRow = 30;
