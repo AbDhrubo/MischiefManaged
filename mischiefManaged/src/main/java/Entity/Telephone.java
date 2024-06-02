@@ -20,7 +20,7 @@ public class Telephone extends Entity{
 
     public void setDialogue()
     {
-        dialogues[0] = "Feluda: I'm busy now";
+        dialogues[0] = "আমি এখন পারছি না তোপসে, তুই নিজে পারলে দেখ একটু।";
     }
 //    public void setAction()
 //    {
