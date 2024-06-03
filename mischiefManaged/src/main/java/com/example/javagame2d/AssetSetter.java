@@ -20,10 +20,14 @@ public class AssetSetter {
         gp.obj[1][1] = new OBJ_Doorkey(gp);
         gp.obj[1][1].worldX = 38 * gp.tileSize;
         gp.obj[1][1].worldY = 12 * gp.tileSize;
-//
-//        gp.obj[2] = new OBJ_Key(gp);
-//        gp.obj[2].worldX = 38 * gp.tileSize;
-//        gp.obj[2].worldY = 8 * gp.tileSize;
+
+        gp.obj[1][2] = new OBJ_Door(gp);
+        gp.obj[1][2].worldX = 23 * gp.tileSize;
+        gp.obj[1][2].worldY = 7 * gp.tileSize;
+
+        gp.obj[1][3] = new Statue(gp);
+        gp.obj[1][3].worldX = 34 * gp.tileSize;
+        gp.obj[1][3].worldY = 4 * gp.tileSize;
 //
 //        gp.obj[3] = new OBJ_Door(gp);
 //        gp.obj[3].worldX = 10 * gp.tileSize;
@@ -104,6 +108,10 @@ public class AssetSetter {
         gp.npc[mapNum][6] = new Empty_chest_1(gp);
         gp.npc[mapNum][6].worldX = gp.tileSize*25;
         gp.npc[mapNum][6].worldY = gp.tileSize*27;
+
+        gp.npc[mapNum][7] = new Lake_door(gp);
+        gp.npc[mapNum][7].worldX = gp.tileSize*23;
+        gp.npc[mapNum][7].worldY = gp.tileSize*7;
     }
 
     public void setTempoNPC()
