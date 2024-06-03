@@ -31,7 +31,8 @@ public class Letter_box extends Entity{
 
     public void setDialogue()
     {
-        dialogues[0] = "erpor tolowar er kache jabe";
+        dialogues[0] = "কে জানি কবে বলেছিলো, বড় অসির চেয়ে মসি,\n" +
+                "সত্য কি তা? বের করো দেখি সন্ধ্যা শশী!";
     }
     public void setAction()
     {
@@ -73,7 +74,7 @@ public class Letter_box extends Entity{
             gp.npc[1][1].dialogue = true;
             dialogue = false;
             gp.ui.currentDialogue = dialogues[dialogueIndex];
-            gp.ui.dialogueImage = gp.ui.dialogueImages.get(2);
+            gp.ui.dialogueImage = gp.ui.dialogueImages.get(0);
         }
 
     }

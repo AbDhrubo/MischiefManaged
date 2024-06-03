@@ -21,7 +21,8 @@ public class Buddha extends Entity{
 
     public void setDialogue()
     {
-        dialogues[0] = "buddhas quote";
+        dialogues[0] = "পানিতেই জনম, পানিতে মরণ,\n" +
+                "করিল বুদ্ধ জপে অনুধাবন।";
     }
 
     public void speak()

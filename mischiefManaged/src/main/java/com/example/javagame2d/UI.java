@@ -68,7 +68,7 @@ public class UI {
     }
 
     private void initiateStory() throws IOException {
-        storyLines.add("কলকাতার গরমের মধ্যে এক ব্যস্ত ক্লান্ত দুপুর, ফেলুদা বাসায় নেই।");
+        storyLines.add("কলকাতার গরমের মধ্যে এক ব্যস্ত ক্লান্ত দুপুর, ফেলুদা বাড়ী নেই।");
         storyLines.add("বাদশাহী আংটির কেসের পর থেকে ফেলুদা অনেক ব্যস্ত হয়ে পড়েছে।");
         storyLines.add("তপসে আর জটায়ু পায়চারি করছি বাড়িতে।");
         storyLines.add("হুট করে বেজে ওঠে ডিং ডং!");
@@ -78,7 +78,9 @@ public class UI {
         storyLines.add("শোভাবাজারে দাগ দেয়া?পুতুলবাড়িতে?কি আছে ওখানে?");
         storyLines.add("শোভাবাজারে দাগ দেয়া?পুতুলবাড়িতে?কি আছে ওখানে?");
         storyLines.add("৫ ঘণ্টা সময় বাকি!\" এরই বা অর্থ কি?");
-        storyLines.add("হুট করে বেজে ওঠে ক্রিং ক্রিং ক্রিং…");
+        storyLines.add("আপনি কে? এখানে কি করছেন? এই পুতুলবাড়িতে আপনার কি কাজ?");
+        storyLines.add("আমার যে কি কাজ তা যদি তুমি জানতে খোকা! যাও, দেরি কোরো না, যা খুঁজতে এসেছো লেগে পড়ো।");
+        storyLines.add(" মনে রেখো, লেগে থাকো সৎভাবে, স্বপ্নজয় তোমারই হবে। একবার ধোঁকা খেলেই কি বারবার খাবে?");
 
         BufferedImage temp0 = ImageIO.read(Objects.requireNonNull(getClass().getResource("/models/0.png")));
         BufferedImage temp1 = ImageIO.read(Objects.requireNonNull(getClass().getResource("/models/1.png")));
@@ -96,6 +98,9 @@ public class UI {
         storyImages.add(temp0);
         storyImages.add(temp0);
         storyImages.add(temp0);
+        storyImages.add(temp0);
+        storyImages.add(temp3);
+        storyImages.add(temp3);
 
     }
 
@@ -132,14 +137,14 @@ public class UI {
         if (gp.gameState == gp.transitionState) {
             System.out.println("here");
             drawTransitionScreen();
-            new Thread(() -> {
-                try{
-                    Thread.sleep(1500);
-                    drawTransitionScreen();
-                } catch (InterruptedException e) {
-                    throw new RuntimeException(e);
-                }
-            });
+//            new Thread(() -> {
+//                try{
+//                    Thread.sleep(1500);
+//                    drawTransitionScreen();
+//                } catch (InterruptedException e) {
+//                    throw new RuntimeException(e);
+//                }
+//            });
         }
 
 //        if(gameFinished == true)
@@ -356,8 +361,8 @@ public class UI {
         G2.setColor(Color.WHITE); // Set the text color to white
         G2.drawString("Press", (float)(x + width - (float)gp.tileSize*1.5), (int)y+height + gp.tileSize*3);
 
-        int imageWidth = 3 * dialogueImage.getWidth(null); // Note the 'null' parameter
-        int imageHeight = 3 * dialogueImage.getHeight(null);
+        int imageWidth = 2 * dialogueImage.getWidth(null); // Note the 'null' parameter
+        int imageHeight = 2 * dialogueImage.getHeight(null);
         int imageX = (int) (x + width - (float)gp.tileSize*2 + 20);
         int imageY = (int)y+height + gp.tileSize*3;
         G2.drawImage(arrowImage, imageX, imageY, imageWidth, imageHeight, null);

@@ -21,7 +21,7 @@ public class Armour extends Entity{
 
     public void setDialogue()
     {
-        dialogues[0] = "A hidden key! but for what";
+        dialogues[0] = "চাবি? এখানে চাবি কোথা থেকে এলো? এ জায়গাটা আসলে কি?\n";
     }
 
     public void speak()
@@ -37,7 +37,7 @@ public class Armour extends Entity{
             gp.player.stage = 7;
 
             gp.ui.currentDialogue = dialogues[dialogueIndex];
-            gp.ui.dialogueImage = gp.ui.dialogueImages.get(2);
+            gp.ui.dialogueImage = gp.ui.dialogueImages.get(0);
 
         }
     }
