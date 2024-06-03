@@ -62,7 +62,7 @@ public class Telephone extends Entity{
         gp.player.stage = 4;
         gp.npc[gp.currentMap][1].dialogue = true;
         gp.ui.currentDialogue = dialogues[dialogueIndex];
-        gp.ui.dialogueImage = gp.ui.dialogueImages.get(1);
+        gp.ui.dialogueImage = gp.ui.dialogueImages.get(2);
 
     }
 }

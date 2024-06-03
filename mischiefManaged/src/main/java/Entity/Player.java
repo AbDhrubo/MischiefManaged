@@ -18,7 +18,7 @@ public class Player extends Entity
 
     public int stage = 0;
 
-    //public int hasKey = 0;
+    public int hasKey = 0;
 
     public Player(GamePanel gp,KeyHandler keyH)
     {
@@ -44,7 +44,7 @@ public class Player extends Entity
         if(gp.currentMap == 0) {
             worldX = gp.tileSize * 13;
             worldY = gp.tileSize * 10;
-            speed = 4;
+            speed = 7;
             direction = "down";
         }
 
@@ -138,37 +138,40 @@ public class Player extends Entity
     }
 public void pickUpObject(int i)
 {
-//    if(i != 999)
-//    {
-////        String objectName = gp.obj[i].name;
-////        switch(objectName)
-////        {
-////            case "Key":
-////                System.out.println(1);
-////                gp.obj[i] = null;
-////                gp.ui.showMessage("You got a key!");
-////            break;
-////            case "Door":
-////                if(hasKey > 0) {
-////                    gp.obj[i] = null;
-////                    hasKey--;
-////                    gp.ui.showMessage("You opened the door!");
-////                }
-////                else {
-////                    gp.ui.showMessage("You need a key!");
-////                }
-////                break;
-////            case "Boots":
-////                speed += 2;
-////                gp.obj[i] = null;
-////                gp.ui.showMessage("Speed!");
-////                break;
-////            case "Chest":
-////            gp.ui.gameFinished = true;
-////            gp.stopMusic();
-////
-////        }
-////    }
+    if(i != 999)
+    {
+        String objectName = gp.obj[1][i].name;
+        switch(objectName)
+        {
+            case "Key":
+                if(stage > 5) {
+                    System.out.println(1);
+                    gp.obj[1][i] = null;
+                    hasKey++;
+                }
+                //gp.ui.showMessage("You got a key!");
+            break;
+            case "Door":
+                if(hasKey > 0) {
+                    gp.obj[i] = null;
+                    hasKey--;
+                    gp.ui.showMessage("You opened the door!");
+                }
+                else {
+                    gp.ui.showMessage("You need a key!");
+                }
+                break;
+            case "Boots":
+                speed += 2;
+                gp.obj[i] = null;
+                gp.ui.showMessage("Speed!");
+                break;
+            case "Chest":
+            gp.ui.gameFinished = true;
+            gp.stopMusic();
+
+        }
+    }
 }
 public void interactNPC(int i)
 {

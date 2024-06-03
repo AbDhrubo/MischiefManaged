@@ -12,7 +12,7 @@ public class Letter_box extends Entity{
     public Letter_box(GamePanel gp)
     {
         super(gp);
-        direction = "down";
+        direction = "up";
         speed = 0;
 //        getOldManImage();
         setDialogue();
@@ -35,43 +35,44 @@ public class Letter_box extends Entity{
     }
     public void setAction()
     {
-        actionLockCounter++;
-        if(actionLockCounter == 120)
-        {
-            Random random = new Random();
-            int i = random.nextInt(100) + 1;
-            if(i <= 25)
-            {
-                direction = "up";
-            }
-            if(i > 25 && i <= 50)
-            {
-                direction = "down";
-            }
-
-            if(i > 50 && i <= 75)
-            {
-                direction = "left";
-            }
-
-            if(i > 75 && i <= 100)
-            {
-                direction = "right";
-            }
-            actionLockCounter = 0;
-        }
+//        actionLockCounter++;
+//        if(actionLockCounter == 120)
+//        {
+//            Random random = new Random();
+//            int i = random.nextInt(100) + 1;
+//            if(i <= 25)
+//            {
+//                direction = "up";
+//            }
+//            if(i > 25 && i <= 50)
+//            {
+//                direction = "down";
+//            }
+//
+//            if(i > 50 && i <= 75)
+//            {
+//                direction = "left";
+//            }
+//
+//            if(i > 75 && i <= 100)
+//            {
+//                direction = "right";
+//            }
+//            actionLockCounter = 0;
+//        }
 
     }
     public void speak()
     {
 
-        if (gp.player.stage == 5)
+        if(gp.player.stage == 5)
         {
+            System.out.println("hoise");
             dialogueIndex = 0;
-            dialogue = false;
             gp.player.stage = 6;
+            gp.npc[1][1].dialogue = true;
             gp.ui.currentDialogue = dialogues[dialogueIndex];
-            //gp.ui.dialogueImage = gp.ui.dialogueImages.get(2);
+            gp.ui.dialogueImage = gp.ui.dialogueImages.get(2);
         }
 
     }

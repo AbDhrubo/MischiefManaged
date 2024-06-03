@@ -14,6 +14,7 @@ public class Armour extends Entity{
         super(gp);
         direction = "down";
         speed = 0;
+        dialogue = false;
 //        getOldManImage();
         setDialogue();
     }
@@ -65,31 +66,14 @@ public class Armour extends Entity{
     public void speak()
     {
 
-        if (gp.player.stage == 0)
+        if (gp.player.stage == 6)
         {
             dialogueIndex = 0;
             dialogue = false;
-            gp.player.stage = 1;
+
             gp.ui.currentDialogue = dialogues[dialogueIndex];
             gp.ui.dialogueImage = gp.ui.dialogueImages.get(2);
-            gp.aSetter.setTempoNPC();
-        }
-        else if(gp.player.stage == 4)
-        {
-            gp.currentMap = 1;
-
-            gp.player.worldX = gp.tileSize * 3;
-            gp.player.worldY = gp.tileSize * 27;
-            gp.player.speed = 4;
-            gp.player.direction = "down";
-
-            gp.maxWorldCol = 40;
-            gp.maxWorldRow = 30;
-            gp.tileM.loadMap("/maps/level_2.txt",1);
-            gp.gameState = gp.playState;
 
         }
-
-
     }
 }

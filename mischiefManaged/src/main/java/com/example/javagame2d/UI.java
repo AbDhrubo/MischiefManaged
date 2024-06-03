@@ -1,6 +1,7 @@
 package com.example.javagame2d;
 
 import javafx.scene.effect.DropShadow;
+import objects.OBJ_Key;
 
 import javax.imageio.ImageIO;
 import javax.swing.*;
@@ -18,6 +19,8 @@ public class UI {
     Graphics2D G2;
     Font arial_40,arial_80B;
     BufferedImage bgImage;
+
+    BufferedImage keyImage;
     public boolean messageOn = false;
     public String message = "";
     int messageCounter = 0;
@@ -46,13 +49,13 @@ public class UI {
         this.storyLines = new ArrayList<>();
         initiateStory();
 
-        for(int i = 0; i<4; i++){
+        for(int i = 0; i<6; i++){
             System.out.println(STR."/models/\{i}.png");
             BufferedImage temp = ImageIO.read(Objects.requireNonNull(getClass().getResource(STR."/models/\{i}.png")));
             dialogueImages.add(temp);
         }
-        //OBJ_Key key = new OBJ_Key(gp);
-        //keyImage = key.image;
+
+        keyImage = dialogueImages.get(5);
     }
 
     private void initiateStory() throws IOException {
@@ -116,58 +119,59 @@ public class UI {
         if(gp.gameState == gp.storyState){
             drawStoryScreen();
         }
-        /*if(gameFinished == true)
-        {
+
+//        if(gameFinished == true)
+//        {
+//            G2.setFont(arial_40);
+//            G2.setColor(Color.white);
+//
+//            String text;
+//            int textLength;
+//            int x;
+//            int y;
+//            text = "You found the treasure";
+//            textLength = (int)G2.getFontMetrics().getStringBounds(text,G2).getWidth();
+//            x = gp.screenWidth / 2 - textLength / 2;
+//            y = gp.screenHeight/2 - (gp.tileSize * 3);
+//            G2.drawString(text,x,y);
+//
+//            text = "Your Time is:" + dFormat.format(playTime) + "!";
+//            textLength = (int)G2.getFontMetrics().getStringBounds(text,G2).getWidth();
+//            x = gp.screenWidth / 2 - textLength / 2;
+//            y = gp.screenHeight/2 + (gp.tileSize * 4);
+//            G2.drawString(text,x,y);
+//
+//            G2.setFont(arial_80B);
+//            G2.setColor(Color.yellow);
+//            text = "Congratulations";
+//            textLength = (int)G2.getFontMetrics().getStringBounds(text,G2).getWidth();
+//            x = gp.screenWidth / 2 - textLength / 2;
+//            y = gp.screenHeight/2 - (gp.tileSize * 3);
+//            G2.drawString(text,x,y);
+//            gp.gameThread = null;
+//        }
+//
+//        else
+//        {
+        if(gp.player.stage > 4) {
             G2.setFont(arial_40);
             G2.setColor(Color.white);
-
-            String text;
-            int textLength;
-            int x;
-            int y;
-            text = "You found the treasure";
-            textLength = (int)G2.getFontMetrics().getStringBounds(text,G2).getWidth();
-            x = gp.screenWidth / 2 - textLength / 2;
-            y = gp.screenHeight/2 - (gp.tileSize * 3);
-            G2.drawString(text,x,y);
-
-            text = "Your Time is:" + dFormat.format(playTime) + "!";
-            textLength = (int)G2.getFontMetrics().getStringBounds(text,G2).getWidth();
-            x = gp.screenWidth / 2 - textLength / 2;
-            y = gp.screenHeight/2 + (gp.tileSize * 4);
-            G2.drawString(text,x,y);
-
-            G2.setFont(arial_80B);
-            G2.setColor(Color.yellow);
-            text = "Congratulations";
-            textLength = (int)G2.getFontMetrics().getStringBounds(text,G2).getWidth();
-            x = gp.screenWidth / 2 - textLength / 2;
-            y = gp.screenHeight/2 - (gp.tileSize * 3);
-            G2.drawString(text,x,y);
-            gp.gameThread = null;
-        }
-
-        else
-        {
-            G2.setFont(arial_40);
-            G2.setColor(Color.white);
-            G2.drawImage(keyImage,gp.tileSize/2,gp.tileSize/2,gp.tileSize,gp.tileSize,null);
+            G2.drawImage(keyImage, gp.tileSize / 2, gp.tileSize / 2, gp.tileSize, gp.tileSize, null);
             G2.drawString("x " + gp.player.hasKey, 74, 65);
-            playTime += (double)1/60;
-            G2.drawString("Time:" + dFormat.format(playTime),gp.tileSize*11,65);
-            if(messageOn == true)
-            {
-                G2.setFont(G2.getFont().deriveFont(30F));
-                G2.drawString(message,gp.tileSize/2,gp.tileSize * 5);
-                messageCounter++;
-
-                if(messageCounter > 120)
-                {
-                    messageCounter = 0;
-                    messageOn = false;
-                }
-            }
-        }*/
+            playTime += (double) 1 / 60;
+//            G2.drawString("Time:" + dFormat.format(playTime), gp.tileSize * 11, 65);
+//            if (messageOn == true) {
+//                G2.setFont(G2.getFont().deriveFont(30F));
+//                G2.drawString(message, gp.tileSize / 2, gp.tileSize * 5);
+//                messageCounter++;
+//
+//                if (messageCounter > 120) {
+//                    messageCounter = 0;
+//                    messageOn = false;
+//                }
+//            }
+        }
+//        }
 
     }
     public void drawTitleScreen()
@@ -394,8 +398,8 @@ public class UI {
 
     public void drawSubWindow(int x,int y, int width,int height)
     {
-        System.out.println(width);
-        System.out.println(height);
+        //System.out.println(width);
+        //System.out.println(height);
         Color c = new Color(0,0,0,210);
         G2.setColor(c);
         G2.fillRoundRect(x,y,width,height,35,35);

@@ -72,7 +72,7 @@ public class GamePanel extends JPanel implements Runnable{
     }
 
     public void setupGame() {
-        //aSetter.setObject();
+        aSetter.setObject();
         aSetter.setNPC();
         //aSetter.setTempoNPC();
         //playMusic(0);
@@ -151,7 +151,7 @@ public class GamePanel extends JPanel implements Runnable{
             ui.drawPauseScreen();
         }
         if(gameState == storyState){
-            System.out.println("gg");
+            //System.out.println("gg");
             ui.drawStoryScreen();
         }
     }
