@@ -293,10 +293,10 @@ public class UI {
         int width = gp.screenWidth - (gp.tileSize * 4);
         int height = gp.tileSize * 4;
         drawSubWindow((int)x, (int)y, width, height);
-        drawSubWindow((int)x + width - gp.tileSize*2, (int)y+height + gp.tileSize*2, gp.tileSize* 3, gp.tileSize*2);
+        drawSubWindow((int)x + width - gp.tileSize*2 +10, (int)y+height + gp.tileSize*2 +10, gp.tileSize* 2, gp.tileSize*2);
         G2.setFont(new Font("Arial", Font.PLAIN, 20));
         G2.setColor(Color.WHITE); // Set the text color to white
-        G2.drawString("PRESS", (float)(x + width - (float)gp.tileSize*1.5), (int)y+height + gp.tileSize*3);
+        G2.drawString("Press", (float)(x + width - (float)gp.tileSize*1.5), (int)y+height + gp.tileSize*3);
 
         int imageWidth = 3 * dialogueImage.getWidth(null); // Note the 'null' parameter
         int imageHeight = 3 * dialogueImage.getHeight(null);
@@ -359,7 +359,7 @@ public class UI {
         int width = gp.screenWidth - (gp.tileSize * 4);
         int height = gp.tileSize * 4;
         drawSubWindow((int)x, (int)y, width, height);
-        drawSubWindow((int)x + width - gp.tileSize*2, (int)y+height + gp.tileSize*2, gp.tileSize* 3, gp.tileSize*2);
+        drawSubWindow((int)x + width - gp.tileSize*2 +10, (int)y+height + gp.tileSize*2 +10, gp.tileSize* 2, gp.tileSize*2);
         G2.setFont(new Font("Arial", Font.PLAIN, 20));
         G2.setColor(Color.WHITE); // Set the text color to white
         G2.drawString("PRESS", (float)(x + width - (float)gp.tileSize*1.5), (int)y+height + gp.tileSize*3);
