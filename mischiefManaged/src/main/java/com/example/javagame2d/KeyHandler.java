@@ -1,7 +1,9 @@
 package com.example.javagame2d;
 
+import javax.swing.*;
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
+import java.io.IOException;
 
 public class KeyHandler implements KeyListener {
     GamePanel gp;
@@ -120,12 +122,17 @@ public class KeyHandler implements KeyListener {
         } else if (gp.gameState == gp.storyState){
             if (code == KeyEvent.VK_RIGHT){
                 if(gp.progressionState > gp.storyLevel.get(gp.currLevel)){
+                    if (gp.currLevel == 2) {
+                        // Initiate transition if currLevel is 2
+                        gp.ui.startTransition(gp.playState);
+                    } 
                     gp.progressionState = 0;
-                    gp.gameState = gp.playState;
                     gp.currLevel++;
+                    gp.gameState = gp.playState;
                 }
 
                 else {
+
                     gp.progressionState++;
                 }
                 gp.storyIndex++;
