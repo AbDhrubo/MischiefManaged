@@ -33,6 +33,7 @@ public class Well extends Entity{
             gp.player.stage = 15;
             dialogue = false;
 
+
             gp.ui.currentDialogue = dialogues[dialogueIndex];
             gp.ui.dialogueImage = gp.ui.dialogueImages.get(2);
 

@@ -148,36 +148,36 @@ public class UI {
 //            });
         }
 
-//        if(gameFinished == true)
-//        {
-//            G2.setFont(arial_40);
-//            G2.setColor(Color.white);
-//
-//            String text;
-//            int textLength;
-//            int x;
-//            int y;
-//            text = "You found the treasure";
-//            textLength = (int)G2.getFontMetrics().getStringBounds(text,G2).getWidth();
-//            x = gp.screenWidth / 2 - textLength / 2;
-//            y = gp.screenHeight/2 - (gp.tileSize * 3);
-//            G2.drawString(text,x,y);
-//
-//            text = "Your Time is:" + dFormat.format(playTime) + "!";
-//            textLength = (int)G2.getFontMetrics().getStringBounds(text,G2).getWidth();
-//            x = gp.screenWidth / 2 - textLength / 2;
-//            y = gp.screenHeight/2 + (gp.tileSize * 4);
-//            G2.drawString(text,x,y);
-//
-//            G2.setFont(arial_80B);
-//            G2.setColor(Color.yellow);
-//            text = "Congratulations";
-//            textLength = (int)G2.getFontMetrics().getStringBounds(text,G2).getWidth();
-//            x = gp.screenWidth / 2 - textLength / 2;
-//            y = gp.screenHeight/2 - (gp.tileSize * 3);
-//            G2.drawString(text,x,y);
-//            gp.gameThread = null;
-//        }
+        if(gameFinished == true)
+        {
+            G2.setFont(arial_40);
+            G2.setColor(Color.white);
+
+            String text;
+            int textLength;
+            int x;
+            int y;
+            text = "You found the treasure";
+            textLength = (int)G2.getFontMetrics().getStringBounds(text,G2).getWidth();
+            x = gp.screenWidth / 2 - textLength / 2;
+            y = gp.screenHeight/2 - (gp.tileSize * 3);
+            G2.drawString(text,x,y);
+
+            text = "Your Time is:" + dFormat.format(playTime) + "!";
+            textLength = (int)G2.getFontMetrics().getStringBounds(text,G2).getWidth();
+            x = gp.screenWidth / 2 - textLength / 2;
+            y = gp.screenHeight/2 + (gp.tileSize * 4);
+            G2.drawString(text,x,y);
+
+            G2.setFont(arial_80B);
+            G2.setColor(Color.yellow);
+            text = "Congratulations";
+            textLength = (int)G2.getFontMetrics().getStringBounds(text,G2).getWidth();
+            x = gp.screenWidth / 2 - textLength / 2;
+            y = gp.screenHeight/2 - (gp.tileSize * 3);
+            G2.drawString(text,x,y);
+            gp.gameThread = null;
+        }
 //
 //        else
 //        {
