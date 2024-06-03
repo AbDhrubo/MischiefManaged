@@ -167,7 +167,7 @@ public void pickUpObject(int i)
                     gp.obj[1][i] = null;
 
                     gp.player.stage = 12;
-
+                    hasDoorKey = 0;
                     gp.npc[1][7].dialogueIndex = 1;
                     gp.ui.currentDialogue = dialogues[dialogueIndex];
                     gp.ui.dialogueImage = gp.ui.dialogueImages.get(2);

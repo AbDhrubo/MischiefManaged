@@ -80,7 +80,8 @@ public class UI {
         storyLines.add("৫ ঘণ্টা সময় বাকি!\" এরই বা অর্থ কি?");
         storyLines.add("আপনি কে? এখানে কি করছেন? এই পুতুলবাড়িতে আপনার কি কাজ?");
         storyLines.add("আমার যে কি কাজ তা যদি তুমি জানতে খোকা! যাও, দেরি কোরো না, যা খুঁজতে এসেছো লেগে পড়ো।");
-        storyLines.add(" মনে রেখো, লেগে থাকো সৎভাবে, স্বপ্নজয় তোমারই হবে। একবার ধোঁকা খেলেই কি বারবার খাবে?");
+        storyLines.add("মনে রেখো, লেগে থাকো সৎভাবে, স্বপ্নজয় তোমারই হবে। একবার ধোঁকা খেলেই কি বারবার খাবে?");
+
 
         BufferedImage temp0 = ImageIO.read(Objects.requireNonNull(getClass().getResource("/models/0.png")));
         BufferedImage temp1 = ImageIO.read(Objects.requireNonNull(getClass().getResource("/models/1.png")));
