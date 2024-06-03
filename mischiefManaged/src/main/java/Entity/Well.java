@@ -8,8 +8,8 @@ import java.awt.image.BufferedImage;
 import java.io.IOException;
 import java.util.Random;
 
-public class Key_chest_2 extends Entity{
-    public Key_chest_2(GamePanel gp)
+public class Well extends Entity{
+    public Well(GamePanel gp)
     {
         super(gp);
         direction = "down";
@@ -21,19 +21,17 @@ public class Key_chest_2 extends Entity{
 
     public void setDialogue()
     {
-        dialogues[0] = "এটা দিয়ে আবার কি খোলে";
+        dialogues[0] = "eito chabi !";
     }
 
     public void speak()
     {
 
-        if (gp.player.stage == 10)
+        if (gp.player.stage == 14)
         {
             dialogueIndex = 0;
-            gp.player.stage = 11;
+            gp.player.stage = 15;
             dialogue = false;
-            gp.npc[1][6].dialogue = true;
-            gp.player.hasKey = 0;
 
             gp.ui.currentDialogue = dialogues[dialogueIndex];
             gp.ui.dialogueImage = gp.ui.dialogueImages.get(2);
