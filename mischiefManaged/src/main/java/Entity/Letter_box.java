@@ -65,6 +65,7 @@ public class Letter_box extends Entity{
     }
     public void speak()
     {
+        gp.playSound(10);
 
         if(gp.player.stage >= 5)
         {

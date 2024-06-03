@@ -122,6 +122,13 @@ public class KeyHandler implements KeyListener {
         } else if (gp.gameState == gp.storyState){
             if (code == KeyEvent.VK_RIGHT){
                 if(gp.progressionState > gp.storyLevel.get(gp.currLevel)){
+                    if (gp.currLevel == 0) {
+                        // Initiate transition if currLevel is 2
+                        gp.playSound(6);
+                    }
+                    else if (gp.currLevel == 1){
+                        gp.playSound(8);
+                    }
                     if (gp.currLevel == 2) {
                         // Initiate transition if currLevel is 2
                         gp.ui.startTransition(gp.playState);

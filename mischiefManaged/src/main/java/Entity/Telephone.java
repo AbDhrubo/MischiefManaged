@@ -61,6 +61,8 @@ public class Telephone extends Entity{
         }
         gp.player.stage = 4;
         gp.npc[gp.currentMap][1].dialogue = true;
+        System.out.println("here");
+        gp.playSound(7);
         gp.ui.currentDialogue = dialogues[dialogueIndex];
         gp.ui.dialogueImage = gp.ui.dialogueImages.get(2);
 

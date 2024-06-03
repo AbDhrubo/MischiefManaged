@@ -79,6 +79,7 @@ public class Lake_door extends Entity{
             gp.ui.currentDialogue = dialogues[dialogueIndex];
             gp.ui.dialogueImage = gp.ui.dialogueImages.get(2);
         }
+        gp.playSound(8);
 
     }
 }

@@ -21,8 +21,17 @@ public class Sound {
                 "/Sound/gourab-das-harmonica_feluda-theme-titan-mozart-s-symphony-no-25-shuffle-rhythm-gourab-das-harmonica.wav");
         soundURL[4] = getClass().getResource(
                 "/Sound/gourab-das-harmonica_feluda-theme-titan-mozart-s-symphony-no-25-shuffle-rhythm-gourab-das-harmonica.wav");
-        soundURL[5] = getClass().getResource("/Sound/villager.mp3");
-        soundURL[6] = getClass().getResource("/Sound/doorbell.mp3");
+        soundURL[5] = getClass().getResource("/Sound/villager.wav");
+        soundURL[6] = getClass().getResource("/Sound/doorbell.wav");
+        soundURL[7] = getClass().getResource("/Sound/old_telephone.wav");
+        soundURL[8] = getClass().getResource("/Sound/door_unlocking.wav");
+        soundURL[9] = getClass().getResource("/Sound/key.wav");
+        soundURL[10] = getClass().getResource("/Sound/paper.wav");
+        soundURL[11] = getClass().getResource("/Sound/chest.wav");
+        soundURL[12] = getClass().getResource("/Sound/victory.wav");
+        soundURL[13] = getClass().getResource("/Sound/valorant_ace_sound.wav");
+        soundURL[14] = getClass().getResource("/Sound/divine.wav");
+        soundURL[15] = getClass().getResource("/Sound/water.wav");
     }
 
     public void setFile(int i) {

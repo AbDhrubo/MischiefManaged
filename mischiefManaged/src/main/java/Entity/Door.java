@@ -107,6 +107,7 @@ public class Door extends Entity{
 //>>>>>>> 1a2572f81b861ec186c7029034ebd00a1cd0917d
 
         }
+        gp.playSound(8);
 
 
     }

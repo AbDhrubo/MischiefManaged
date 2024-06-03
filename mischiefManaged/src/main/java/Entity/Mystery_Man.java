@@ -78,6 +78,7 @@ public class Mystery_Man extends Entity{
             gp.temponpc[gp.currentMap][0] = null;
         }
 
+        gp.playSound(5);
         gp.ui.currentDialogue = dialogues[dialogueIndex];
         switch (gp.player.direction)
         {

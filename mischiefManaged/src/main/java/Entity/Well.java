@@ -37,5 +37,7 @@ public class Well extends Entity{
             gp.ui.dialogueImage = gp.ui.dialogueImages.get(2);
 
         }
+
+        gp.playSound(15);
     }
 }

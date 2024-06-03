@@ -40,5 +40,6 @@ public class Armour extends Entity{
             gp.ui.dialogueImage = gp.ui.dialogueImages.get(0);
 
         }
+        gp.playSound(9);
     }
 }

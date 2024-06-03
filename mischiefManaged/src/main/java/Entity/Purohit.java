@@ -86,6 +86,8 @@ public class Purohit extends Entity{
         gp.ui.currentDialogue = dialogues[dialogueIndex];
         gp.ui.dialogueImage = gp.ui.dialogueImages.get(2);
         gp.gameState = gp.storyState;
+        gp.playSound(5);
+
 
         switch (gp.player.direction)
         {

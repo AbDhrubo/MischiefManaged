@@ -84,6 +84,7 @@ public class NPC_OldMan extends Entity{
         {
             dialogueIndex = 3;
         }
+        gp.playSound(5);
 
         gp.ui.currentDialogue = dialogues[dialogueIndex];
         gp.ui.dialogueImage = gp.ui.dialogueImages.get(2);
