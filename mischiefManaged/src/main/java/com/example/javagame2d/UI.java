@@ -48,15 +48,15 @@ public class UI {
 
     public UI(GamePanel gp) throws IOException {
         this.gp = gp;
-        arial_40 = new Font("Arial",Font.PLAIN,40);
-        arial_80B = new Font("Arial",Font.BOLD,80);
+        arial_40 = new Font("Arial",Font.PLAIN,20);
+        arial_80B = new Font("Arial",Font.BOLD,20);
 
         this.dialogueImages = new ArrayList<>();
         this.storyImages = new ArrayList<>();
         this.storyLines = new ArrayList<>();
         initiateStory();
 
-        for(int i = 0; i<8; i++){
+        for(int i = 0; i<10; i++){
             System.out.println(STR."/models/\{i}.png");
             BufferedImage temp = ImageIO.read(Objects.requireNonNull(getClass().getResource(STR."/models/\{i}.png")));
             dialogueImages.add(temp);
@@ -122,24 +122,21 @@ public class UI {
         this.G2 = G2;
         G2.setFont(arial_40);
         G2.setColor(Color.white);
-        if(gp.gameState == gp.titleState)
-        {
+
+        if (gp.gameState == gp.titleState) {
             drawTitleScreen();
         }
-        if(gp.gameState == gp.playState)
-        {
+        if (gp.gameState == gp.playState) {
 
         }
-        if(gp.gameState == gp.pauseState)
-        {
+        if (gp.gameState == gp.pauseState) {
             drawPauseScreen();
         }
 
-        if(gp.gameState == gp.dialogueState)
-        {
+        if (gp.gameState == gp.dialogueState) {
             drawDialogueScreen();
         }
-        if(gp.gameState == gp.storyState){
+        if (gp.gameState == gp.storyState) {
             drawStoryScreen();
         }
         if (gp.gameState == gp.transitionState) {
@@ -155,8 +152,7 @@ public class UI {
 //            });
         }
 
-//        if(gameFinished == true)
-//        {
+        if (gameFinished == true) {
 //            G2.setFont(arial_40);
 //            G2.setColor(Color.white);
 //
@@ -175,7 +171,7 @@ public class UI {
 //            x = gp.screenWidth / 2 - textLength / 2;
 //            y = gp.screenHeight/2 + (gp.tileSize * 4);
 //            G2.drawString(text,x,y);
-//
+
 //            G2.setFont(arial_80B);
 //            G2.setColor(Color.yellow);
 //            text = "Congratulations";
@@ -183,16 +179,16 @@ public class UI {
 //            x = gp.screenWidth / 2 - textLength / 2;
 //            y = gp.screenHeight/2 - (gp.tileSize * 3);
 //            G2.drawString(text,x,y);
-//            gp.gameThread = null;
-//        }
+            gp.gameThread = null;
+        }
 //
 //        else
 //        {
-        if(gp.player.stage > 6) {
+        if (gp.player.stage > 6) {
             G2.setFont(arial_40);
             G2.setColor(Color.white);
-            G2.drawImage(keyImage, gp.tileSize / 2, gp.tileSize / 2, gp.tileSize, gp.tileSize, null);
-            G2.drawString("x " + gp.player.hasKey, 74, 65);
+            G2.drawImage(keyImage, gp.tileSize / 2, gp.tileSize / 3, gp.tileSize, gp.tileSize, null);
+            G2.drawString("x " + gp.player.hasKey, 74, 40);
             playTime += (double) 1 / 60;
 //            G2.drawString("Time:" + dFormat.format(playTime), gp.tileSize * 11, 65);
 //            if (messageOn == true) {
@@ -206,11 +202,11 @@ public class UI {
 //                }
 //            }
         }
-        if(gp.player.stage >= 10) {
+        if (gp.player.stage >= 10) {
             G2.setFont(arial_40);
             G2.setColor(Color.white);
-            G2.drawImage(doorkeyImage, gp.tileSize + 100, gp.tileSize / 2, gp.tileSize, gp.tileSize, null);
-            G2.drawString("x " + gp.player.hasDoorKey, 200, 65);
+            G2.drawImage(doorkeyImage, gp.tileSize + 60, gp.tileSize / 3, gp.tileSize, gp.tileSize, null);
+            G2.drawString("x " + gp.player.hasDoorKey, 160, 40);
             playTime += (double) 1 / 60;
 //            G2.drawString("Time:" + dFormat.format(playTime), gp.tileSize * 11, 65);
 //            if (messageOn == true) {
@@ -224,11 +220,11 @@ public class UI {
 //                }
 //            }
         }
-        if(gp.player.stage >= 13) {
+        if (gp.player.stage >= 13) {
             G2.setFont(arial_40);
             G2.setColor(Color.white);
-            G2.drawImage(statueImage, gp.tileSize + 100 + 100 + 30, gp.tileSize / 2, gp.tileSize, gp.tileSize, null);
-            G2.drawString("x 1" , 300 +30, 65);
+            G2.drawImage(statueImage, gp.tileSize + 160, gp.tileSize / 3, gp.tileSize, gp.tileSize, null);
+            G2.drawString("x 1", 290, 40);
             playTime += (double) 1 / 60;
 //            G2.drawString("Time:" + dFormat.format(playTime), gp.tileSize * 11, 65);
 //            if (messageOn == true) {
@@ -242,6 +238,21 @@ public class UI {
 //                }
 //            }
         }
+//        if(gp.player.stage >= 5) {
+//            for (int i = 0; i < 300; i++) {
+//                System.out.println("Loop iteration: " + i);
+//                try {
+//                    // Pause execution for 1 second (1000 milliseconds)
+//                    Thread.sleep(1000);
+//                    G2.setFont(arial_40);
+//                    G2.setColor(Color.white);
+//                    G2.drawImage(statueImage, gp.tileSize + 500, gp.tileSize / 3, gp.tileSize, gp.tileSize, null);
+//                    G2.drawString("time: " + i , 290, 40);
+//                } catch (InterruptedException e) {
+//                    e.printStackTrace();
+//                }
+//            }
+//    }
 //        }
 
     }
