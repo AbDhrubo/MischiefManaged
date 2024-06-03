@@ -72,6 +72,7 @@ public class GamePanel extends JPanel implements Runnable{
         this.storyLevel.add(2);
         this.storyLevel.add(2);
         this.storyLevel.add(0);
+        this.storyLevel.add(1);
         banglaFont = Font.createFont(Font.TRUETYPE_FONT, new File("res/fonts/bangla.ttf")).deriveFont(24f);
     }
 

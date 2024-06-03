@@ -21,7 +21,7 @@ public class Key_chest_2 extends Entity{
 
     public void setDialogue()
     {
-        dialogues[0] = "This must be a door key";
+        dialogues[0] = "এটা দিয়ে আবার কি খোলে";
     }
 
     public void speak()

@@ -21,7 +21,7 @@ public class Empty_chest_1 extends Entity{
 
     public void setDialogue()
     {
-        dialogues[0] = "Oh no chest is empty :(";
+        dialogues[0] = "এই সিন্দুক তো দেখছি খালি";
     }
 
     public void speak()
@@ -35,7 +35,7 @@ public class Empty_chest_1 extends Entity{
             gp.npc[1][3].dialogue = true;
 
             gp.ui.currentDialogue = dialogues[dialogueIndex];
-            gp.ui.dialogueImage = gp.ui.dialogueImages.get(2);
+            gp.ui.dialogueImage = gp.ui.dialogueImages.get(0);
 
         }
     }
