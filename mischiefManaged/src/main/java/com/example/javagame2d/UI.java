@@ -127,14 +127,14 @@ public class UI {
         if (gp.gameState == gp.transitionState) {
             System.out.println("here");
             drawTransitionScreen();
-            new Thread(() -> {
-                try{
-                    Thread.sleep(1500);
-                    drawTransitionScreen();
-                } catch (InterruptedException e) {
-                    throw new RuntimeException(e);
-                }
-            });
+//            new Thread(() -> {
+//                try{
+//                    Thread.sleep(1500);
+//                    drawTransitionScreen();
+//                } catch (InterruptedException e) {
+//                    throw new RuntimeException(e);
+//                }
+//            });
         }
 
 //        if(gameFinished == true)
