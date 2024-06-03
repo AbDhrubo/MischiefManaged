@@ -21,6 +21,7 @@ public class UI {
     BufferedImage bgImage;
 
     BufferedImage keyImage;
+    BufferedImage doorkeyImage;
     public boolean messageOn = false;
     public String message = "";
     int messageCounter = 0;
@@ -53,13 +54,14 @@ public class UI {
         this.storyLines = new ArrayList<>();
         initiateStory();
 
-        for(int i = 0; i<6; i++){
+        for(int i = 0; i<7; i++){
             System.out.println(STR."/models/\{i}.png");
             BufferedImage temp = ImageIO.read(Objects.requireNonNull(getClass().getResource(STR."/models/\{i}.png")));
             dialogueImages.add(temp);
         }
 
         keyImage = dialogueImages.get(5);
+        doorkeyImage = dialogueImages.get(6);
     }
 
     private void initiateStory() throws IOException {
@@ -170,11 +172,29 @@ public class UI {
 //
 //        else
 //        {
-        if(gp.player.stage > 4) {
+        if(gp.player.stage > 6) {
             G2.setFont(arial_40);
             G2.setColor(Color.white);
             G2.drawImage(keyImage, gp.tileSize / 2, gp.tileSize / 2, gp.tileSize, gp.tileSize, null);
             G2.drawString("x " + gp.player.hasKey, 74, 65);
+            playTime += (double) 1 / 60;
+//            G2.drawString("Time:" + dFormat.format(playTime), gp.tileSize * 11, 65);
+//            if (messageOn == true) {
+//                G2.setFont(G2.getFont().deriveFont(30F));
+//                G2.drawString(message, gp.tileSize / 2, gp.tileSize * 5);
+//                messageCounter++;
+//
+//                if (messageCounter > 120) {
+//                    messageCounter = 0;
+//                    messageOn = false;
+//                }
+//            }
+        }
+        if(gp.player.stage >= 10) {
+            G2.setFont(arial_40);
+            G2.setColor(Color.white);
+            G2.drawImage(doorkeyImage, gp.tileSize + 100, gp.tileSize / 2, gp.tileSize, gp.tileSize, null);
+            G2.drawString("x " + gp.player.hasDoorKey, 200, 65);
             playTime += (double) 1 / 60;
 //            G2.drawString("Time:" + dFormat.format(playTime), gp.tileSize * 11, 65);
 //            if (messageOn == true) {

@@ -8,8 +8,8 @@ import java.awt.image.BufferedImage;
 import java.io.IOException;
 import java.util.Random;
 
-public class Armour extends Entity{
-    public Armour(GamePanel gp)
+public class Empty_chest_1 extends Entity{
+    public Empty_chest_1(GamePanel gp)
     {
         super(gp);
         direction = "down";
@@ -21,20 +21,18 @@ public class Armour extends Entity{
 
     public void setDialogue()
     {
-        dialogues[0] = "A hidden key! but for what";
+        dialogues[0] = "Oh no chest is empty :(";
     }
 
     public void speak()
     {
 
-        if (gp.player.stage == 6)
+        if (gp.player.stage >= 7 )
         {
             dialogueIndex = 0;
+            gp.player.stage = 8;
             dialogue = false;
-            gp.npc[1][2].dialogue = true;
-            gp.npc[1][6].dialogue = true;
-
-            gp.player.stage = 7;
+            gp.npc[1][3].dialogue = true;
 
             gp.ui.currentDialogue = dialogues[dialogueIndex];
             gp.ui.dialogueImage = gp.ui.dialogueImages.get(2);

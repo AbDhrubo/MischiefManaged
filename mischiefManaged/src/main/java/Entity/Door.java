@@ -77,6 +77,21 @@ public class Door extends Entity{
         else if(gp.player.stage == 4)
         {
             gp.gameState = gp.storyState;
+//<<<<<<< HEAD
+//            gp.currentMap = 1;
+//
+//            gp.player.worldX = gp.tileSize * 3;
+//            gp.player.worldY = gp.tileSize * 27;
+//            gp.player.speed = 4;
+//            gp.player.direction = "down";
+//            gp.player.stage = 5;
+//            gp.player.speed = 5;
+//
+//            gp.maxWorldCol = 40;
+//            gp.maxWorldRow = 30;
+//            gp.tileM.loadMap("/maps/level_2.txt",1);
+//            gp.gameState = gp.playState;
+//=======
 //            gp.currentMap = 1;
 //
 //            gp.player.worldX = gp.tileSize * 3;
@@ -89,6 +104,7 @@ public class Door extends Entity{
 //            gp.maxWorldRow = 30;
 //            gp.tileM.loadMap("/maps/level_2.txt",1);
 //            gp.gameState = gp.playState;
+//>>>>>>> 1a2572f81b861ec186c7029034ebd00a1cd0917d
 
         }
 

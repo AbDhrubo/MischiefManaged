@@ -19,6 +19,7 @@ public class Player extends Entity
     public int stage = 0;
 
     public int hasKey = 0;
+    public int hasDoorKey = 0;
 
     public Player(GamePanel gp,KeyHandler keyH)
     {
@@ -151,6 +152,16 @@ public void pickUpObject(int i)
                 }
                 //gp.ui.showMessage("You got a key!");
             break;
+
+            case "Doorkey":
+                if(stage >= 10) {
+                    System.out.println(1);
+                    gp.obj[1][i] = null;
+                    hasDoorKey++;
+                }
+                //gp.ui.showMessage("You got a key!");
+                break;
+
             case "Door":
                 if(hasKey > 0) {
                     gp.obj[i] = null;
