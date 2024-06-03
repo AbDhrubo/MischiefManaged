@@ -48,8 +48,8 @@ public class UI {
 
     public UI(GamePanel gp) throws IOException {
         this.gp = gp;
-        arial_40 = new Font("Arial",Font.PLAIN,40);
-        arial_80B = new Font("Arial",Font.BOLD,80);
+        arial_40 = new Font("Arial",Font.PLAIN,20);
+        arial_80B = new Font("Arial",Font.BOLD,20);
 
         this.dialogueImages = new ArrayList<>();
         this.storyImages = new ArrayList<>();
@@ -81,6 +81,8 @@ public class UI {
         storyLines.add("আপনি কে? এখানে কি করছেন? এই পুতুলবাড়িতে আপনার কি কাজ?");
         storyLines.add("আমার যে কি কাজ তা যদি তুমি জানতে খোকা! যাও, দেরি কোরো না, যা খুঁজতে এসেছো লেগে পড়ো।");
         storyLines.add("মনে রেখো, লেগে থাকো সৎভাবে, স্বপ্নজয় তোমারই হবে। একবার ধোঁকা খেলেই কি বারবার খাবে?");
+        storyLines.add("এখান থেকে বেরোব কিভাবে?");
+        storyLines.add("উত্তরে উত্তর পাবে প্রদোষ।বুকে হাত রেখে বলো, তোমার কি অনুসন্ধান শেষ হয়েছে?");
 
 
         BufferedImage temp0 = ImageIO.read(Objects.requireNonNull(getClass().getResource("/models/0.png")));
@@ -102,6 +104,11 @@ public class UI {
         storyImages.add(temp0);
         storyImages.add(temp3);
         storyImages.add(temp3);
+        storyImages.add(temp0);
+        storyImages.add(temp2);
+        storyImages.add(temp2);
+        storyImages.add(temp2);
+
 
     }
 
@@ -184,8 +191,8 @@ public class UI {
         if(gp.player.stage > 6) {
             G2.setFont(arial_40);
             G2.setColor(Color.white);
-            G2.drawImage(keyImage, gp.tileSize / 2, gp.tileSize / 2, gp.tileSize, gp.tileSize, null);
-            G2.drawString("x " + gp.player.hasKey, 74, 65);
+            G2.drawImage(keyImage, gp.tileSize / 2, gp.tileSize / 3, gp.tileSize, gp.tileSize, null);
+            G2.drawString("x " + gp.player.hasKey, 74, 40);
             playTime += (double) 1 / 60;
 //            G2.drawString("Time:" + dFormat.format(playTime), gp.tileSize * 11, 65);
 //            if (messageOn == true) {
@@ -202,8 +209,8 @@ public class UI {
         if(gp.player.stage >= 10) {
             G2.setFont(arial_40);
             G2.setColor(Color.white);
-            G2.drawImage(doorkeyImage, gp.tileSize + 100, gp.tileSize / 2, gp.tileSize, gp.tileSize, null);
-            G2.drawString("x " + gp.player.hasDoorKey, 200, 65);
+            G2.drawImage(doorkeyImage, gp.tileSize + 60, gp.tileSize / 3, gp.tileSize, gp.tileSize, null);
+            G2.drawString("x " + gp.player.hasDoorKey, 160, 40);
             playTime += (double) 1 / 60;
 //            G2.drawString("Time:" + dFormat.format(playTime), gp.tileSize * 11, 65);
 //            if (messageOn == true) {
@@ -220,8 +227,8 @@ public class UI {
         if(gp.player.stage >= 13) {
             G2.setFont(arial_40);
             G2.setColor(Color.white);
-            G2.drawImage(statueImage, gp.tileSize + 100 + 100 + 30, gp.tileSize / 2, gp.tileSize, gp.tileSize, null);
-            G2.drawString("x 1" , 300 +30, 65);
+            G2.drawImage(statueImage, gp.tileSize + 160, gp.tileSize / 3, gp.tileSize, gp.tileSize, null);
+            G2.drawString("x 1" , 290, 40);
             playTime += (double) 1 / 60;
 //            G2.drawString("Time:" + dFormat.format(playTime), gp.tileSize * 11, 65);
 //            if (messageOn == true) {

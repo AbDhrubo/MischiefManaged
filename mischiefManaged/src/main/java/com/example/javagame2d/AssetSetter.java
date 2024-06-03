@@ -120,6 +120,10 @@ public class AssetSetter {
         gp.npc[mapNum][8] = new Well(gp);
         gp.npc[mapNum][8].worldX = gp.tileSize*1;
         gp.npc[mapNum][8].worldY = gp.tileSize*5;
+
+        gp.npc[mapNum][9] = new Exit_door(gp);
+        gp.npc[mapNum][9].worldX = gp.tileSize*2;
+        gp.npc[mapNum][9].worldY = gp.tileSize*1;
     }
 
     public void setTempoNPC()

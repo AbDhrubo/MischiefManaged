@@ -21,6 +21,8 @@ public class Sound {
                 "/Sound/gourab-das-harmonica_feluda-theme-titan-mozart-s-symphony-no-25-shuffle-rhythm-gourab-das-harmonica.wav");
         soundURL[4] = getClass().getResource(
                 "/Sound/gourab-das-harmonica_feluda-theme-titan-mozart-s-symphony-no-25-shuffle-rhythm-gourab-das-harmonica.wav");
+        soundURL[5] = getClass().getResource("/Sound/villager.mp3");
+        soundURL[6] = getClass().getResource("/Sound/doorbell.mp3");
     }
 
     public void setFile(int i) {
