@@ -38,6 +38,10 @@ public class UI {
     public int storyIndex = 0;
     public int commandNumber = 0;
     double playTime;
+    public boolean transitionOn = false;
+    public long transitionStartTime;
+    public final int TRANSITION_DURATION = 1500;
+
     DecimalFormat dFormat = new DecimalFormat("#0.00");
 
     public UI(GamePanel gp) throws IOException {
@@ -69,10 +73,8 @@ public class UI {
         storyLines.add("ফাইলে ছিল কিছু কাগজ, সাথে একটা ম্যাপ। ভাঁজ খুলতেই দেখি, কলকাতার ম্যাপ।");
         storyLines.add("খুবই জীর্ণশীর্ণ, কিন্তু দেখা যায় পার্কস্ট্রিট, ভিক্টোরিয়া মেমোরিয়াল আর…।");
         storyLines.add("শোভাবাজারে দাগ দেয়া?পুতুলবাড়িতে?কি আছে ওখানে?");
-        storyLines.add("হুট করে বেজে ওঠে ক্রিং ক্রিং ক্রিং…");
-        storyLines.add("হুট করে বেজে ওঠে ক্রিং ক্রিং ক্রিং…");
-        storyLines.add("হুট করে বেজে ওঠে ক্রিং ক্রিং ক্রিং…");
-        storyLines.add("হুট করে বেজে ওঠে ক্রিং ক্রিং ক্রিং…");
+        storyLines.add("শোভাবাজারে দাগ দেয়া?পুতুলবাড়িতে?কি আছে ওখানে?");
+        storyLines.add("৫ ঘণ্টা সময় বাকি!\" এরই বা অর্থ কি?");
         storyLines.add("হুট করে বেজে ওঠে ক্রিং ক্রিং ক্রিং…");
 
         BufferedImage temp0 = ImageIO.read(Objects.requireNonNull(getClass().getResource("/models/0.png")));
@@ -84,6 +86,9 @@ public class UI {
         storyImages.add(temp3);
         storyImages.add(temp3);
         storyImages.add(temp3);
+        storyImages.add(temp0);
+        storyImages.add(temp0);
+        storyImages.add(temp0);
         storyImages.add(temp0);
         storyImages.add(temp0);
         storyImages.add(temp0);
@@ -120,6 +125,18 @@ public class UI {
         }
         if(gp.gameState == gp.storyState){
             drawStoryScreen();
+        }
+        if (gp.gameState == gp.transitionState) {
+            System.out.println("here");
+            drawTransitionScreen();
+            new Thread(() -> {
+                try{
+                    Thread.sleep(1500);
+                    drawTransitionScreen();
+                } catch (InterruptedException e) {
+                    throw new RuntimeException(e);
+                }
+            });
         }
 
 //        if(gameFinished == true)
@@ -173,7 +190,7 @@ public class UI {
 //                }
 //            }
         }
-        if(gp.player.stage > 10) {
+        if(gp.player.stage >= 10) {
             G2.setFont(arial_40);
             G2.setColor(Color.white);
             G2.drawImage(doorkeyImage, gp.tileSize + 100, gp.tileSize / 2, gp.tileSize, gp.tileSize, null);
@@ -413,6 +430,60 @@ public class UI {
             G2.drawString(l, x, y);
             y += gp.tileSize; // Move down for the next line
         }
+    }
+
+    public void drawTransitionScreen() {
+        System.out.println("wtf");
+        new Thread(() -> {
+            try{
+                Thread.sleep(1000);
+            } catch (InterruptedException e) {
+                throw new RuntimeException(e);
+            }
+        });
+        // Set the background color for the transition screen
+        G2.setColor(Color.BLACK);
+        G2.fillRect(0, 0, gp.screenWidth, gp.screenHeight);
+
+        // Set the font and color for the text
+        G2.setFont(arial_40);
+        G2.setColor(Color.WHITE);
+
+        // Display the transition message
+        String text = "Loading...";
+        int x = getXforCenteredText(text);
+        int y = gp.screenHeight / 2;
+        G2.drawString(text, x, y);
+
+        // Check if the transition duration has passed
+        if (System.currentTimeMillis() - transitionStartTime >= TRANSITION_DURATION) {
+            transitionOn = false;
+            gp.gameState = gp.nextGameState; // Set the next game state
+        }
+    }
+
+    public void startTransition(int nextState) {
+        // Start the transition
+        gp.gameState = gp.transitionState;
+        transitionOn = true;
+        transitionStartTime = System.currentTimeMillis();
+
+        // Set up a Swing Timer to handle the transition delay
+        javax.swing.Timer timer = new javax.swing.Timer(TRANSITION_DURATION, event -> {
+            // Set up map, player state, and switch game state after the delay
+            gp.gameState = nextState;
+            gp.currentMap = 1;
+            gp.player.worldX = gp.tileSize * 3;
+            gp.player.worldY = gp.tileSize * 27;
+            gp.player.speed = 4;
+            gp.player.direction = "down";
+            gp.player.stage = 5;
+            gp.maxWorldCol = 40;
+            gp.maxWorldRow = 30;
+            gp.tileM.loadMap("/maps/level_2.txt", 1);
+        });
+        timer.setRepeats(false);
+        timer.start();
     }
 
 

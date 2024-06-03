@@ -60,6 +60,9 @@ public class GamePanel extends JPanel implements Runnable{
     private String message = "";
     public Font banglaFont;
 
+    public int transitionState = 5;
+    public int nextGameState;
+
     public GamePanel() throws IOException, FontFormatException {
         this.setPreferredSize(new Dimension(screenWidth, screenHeight));
         this.setBackground(Color.black);
@@ -68,6 +71,7 @@ public class GamePanel extends JPanel implements Runnable{
         this.setFocusable(true);
         this.storyLevel.add(2);
         this.storyLevel.add(2);
+        this.storyLevel.add(0);
         banglaFont = Font.createFont(Font.TRUETYPE_FONT, new File("res/fonts/bangla.ttf")).deriveFont(24f);
     }
 

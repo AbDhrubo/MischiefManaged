@@ -153,14 +153,15 @@ public void pickUpObject(int i)
                 //gp.ui.showMessage("You got a key!");
             break;
 
-                case "Doorkey":
-                if(stage > 10) {
+            case "Doorkey":
+                if(stage >= 10) {
                     System.out.println(1);
                     gp.obj[1][i] = null;
                     hasDoorKey++;
                 }
                 //gp.ui.showMessage("You got a key!");
-            break;
+                break;
+
             case "Door":
                 if(hasKey > 0) {
                     gp.obj[i] = null;
