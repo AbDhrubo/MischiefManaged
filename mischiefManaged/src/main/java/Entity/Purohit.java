@@ -8,54 +8,57 @@ import java.awt.image.BufferedImage;
 import java.io.IOException;
 import java.util.Random;
 
-public class Mystery_Man extends Entity{
-    public Mystery_Man(GamePanel gp)
+public class Purohit extends Entity{
+    public Purohit(GamePanel gp)
     {
         super(gp);
         direction = "down";
-        speed = 0;
+        speed = 1;
+        dialogue = false;
         getOldManImage();
         setDialogue();
     }
     public void getOldManImage()
     {
-        up1 = setup("/NPC/oldman_up_1");
-        up2 = setup("/NPC/oldman_up_2");
-        down1 = setup("/NPC/mystery_man");
-        down2 = setup("/NPC/mystery_man");
-        left1 = setup("/NPC/oldman_left_1");
-        left2 = setup("/NPC/oldman_left_2");
-        right1 = setup("/NPC/oldman_right_1");
-        right2 = setup("/NPC/oldman_right_2");
+        up1 = setup("/NPC/oldman_up_11");
+        up2 = setup("/NPC/oldman_up_22");
+        down1 = setup("/NPC/oldman_down_11");
+        down2 = setup("/NPC/oldman_down_22");
+        left1 = setup("/NPC/oldman_left_11");
+        left2 = setup("/NPC/oldman_left_22");
+        right1 = setup("/NPC/oldman_right_11");
+        right2 = setup("/NPC/oldman_right_22");
     }
 
     public void setDialogue()
     {
-        dialogues[0] = "Is Prodosh Mittir home?";
-        dialogues[1] = "এই ফাইলটা রাখুন তো! ফেলুবাবুকে দিবেন!";
+        dialogues[0] = "ke apni?..blabla..bolbona .. blabla";
+        dialogues[1] = "Who is he?";
+        dialogues[2] = "তুমি ঘটনাটা ফেলুবাবুকে বলো, ফোন করো।";
+        dialogues[3] = "তুমি তাহলে একবার গিয়ে দেখবে?";
     }
     public void setAction()
     {
         actionLockCounter++;
-        if(actionLockCounter == 20)
+        if(actionLockCounter == 120)
         {
             Random random = new Random();
             int i = random.nextInt(100) + 1;
-            if(i <= 100)
+            if(i <= 25)
             {
-                direction = "down";
+                direction = "up";
             }
-            else if(i > 25 && i <= 50)
+            if(i > 25 && i <= 50)
             {
                 direction = "down";
             }
 
-            else if(i > 50 && i <= 75)
+            if(i > 50 && i <= 75)
             {
                 direction = "left";
             }
 
-            else if(i > 75 && i <= 100)
+            if(i > 75 && i <= 100)
             {
                 direction = "right";
             }
@@ -65,20 +68,16 @@ public class Mystery_Man extends Entity{
     }
     public void speak()
     {
-        if(gp.player.stage == 1)
+        if(gp.player.stage == 8 || gp.player.stage == 9)
         {
             dialogueIndex = 0;
-            gp.player.stage = 2;
-        }
-        if(gp.player.stage == 2)
-        {
-            dialogueIndex = 1;
-            gp.dialogueLevel = 1;
-            gp.player.stage = 3;
-            gp.temponpc[gp.currentMap][0] = null;
+            gp.npc[1][4].dialogue = true;
+            gp.player.stage = 9;
         }
 
         gp.ui.currentDialogue = dialogues[dialogueIndex];
+        gp.ui.dialogueImage = gp.ui.dialogueImages.get(2);
+
         switch (gp.player.direction)
         {
             case "up":

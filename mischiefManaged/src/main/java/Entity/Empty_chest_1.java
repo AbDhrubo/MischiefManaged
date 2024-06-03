@@ -32,6 +32,7 @@ public class Empty_chest_1 extends Entity{
             dialogueIndex = 0;
             gp.player.stage = 8;
             dialogue = false;
+            gp.npc[1][3].dialogue = true;
 
             gp.ui.currentDialogue = dialogues[dialogueIndex];
             gp.ui.dialogueImage = gp.ui.dialogueImages.get(2);

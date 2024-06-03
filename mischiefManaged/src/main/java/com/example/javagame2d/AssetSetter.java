@@ -1,10 +1,7 @@
 package com.example.javagame2d;
 
 import Entity.*;
-import objects.OBJ_Boots;
-import objects.OBJ_Chest;
-import objects.OBJ_Door;
-import objects.OBJ_Key;
+import objects.*;
 
 public class AssetSetter {
     GamePanel gp;
@@ -20,9 +17,9 @@ public class AssetSetter {
         gp.obj[1][0].worldY = 21 * gp.tileSize;
 
 
-//        gp.obj[1] = new OBJ_Key(gp);
-//        gp.obj[1].worldX = 23 * gp.tileSize;
-//        gp.obj[1].worldY = 40 * gp.tileSize;
+        gp.obj[1][1] = new OBJ_Doorkey(gp);
+        gp.obj[1][1].worldX = 38 * gp.tileSize;
+        gp.obj[1][1].worldY = 12 * gp.tileSize;
 //
 //        gp.obj[2] = new OBJ_Key(gp);
 //        gp.obj[2].worldX = 38 * gp.tileSize;
@@ -91,6 +88,22 @@ public class AssetSetter {
         gp.npc[mapNum][2] = new Empty_chest_1(gp);
         gp.npc[mapNum][2].worldX = gp.tileSize*11;
         gp.npc[mapNum][2].worldY = gp.tileSize*21;
+
+        gp.npc[mapNum][3] = new Purohit(gp);
+        gp.npc[mapNum][3].worldX = gp.tileSize*20;
+        gp.npc[mapNum][3].worldY = gp.tileSize*26;
+
+        gp.npc[mapNum][4] = new Buddha(gp);
+        gp.npc[mapNum][4].worldX = gp.tileSize*32;
+        gp.npc[mapNum][4].worldY = gp.tileSize*25;
+
+        gp.npc[mapNum][5] = new Key_chest_2(gp);
+        gp.npc[mapNum][5].worldX = gp.tileSize*38;
+        gp.npc[mapNum][5].worldY = gp.tileSize*12;
+
+        gp.npc[mapNum][6] = new Empty_chest_1(gp);
+        gp.npc[mapNum][6].worldX = gp.tileSize*25;
+        gp.npc[mapNum][6].worldY = gp.tileSize*27;
     }
 
     public void setTempoNPC()

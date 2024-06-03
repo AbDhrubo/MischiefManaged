@@ -84,6 +84,7 @@ public class Door extends Entity{
             gp.player.speed = 4;
             gp.player.direction = "down";
             gp.player.stage = 5;
+            gp.player.speed = 5;
 
             gp.maxWorldCol = 40;
             gp.maxWorldRow = 30;
