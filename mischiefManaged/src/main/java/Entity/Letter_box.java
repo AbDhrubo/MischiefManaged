@@ -65,12 +65,13 @@ public class Letter_box extends Entity{
     public void speak()
     {
 
-        if(gp.player.stage == 5)
+        if(gp.player.stage >= 5)
         {
             System.out.println("hoise");
             dialogueIndex = 0;
             gp.player.stage = 6;
             gp.npc[1][1].dialogue = true;
+            dialogue = false;
             gp.ui.currentDialogue = dialogues[dialogueIndex];
             gp.ui.dialogueImage = gp.ui.dialogueImages.get(2);
         }

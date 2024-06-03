@@ -87,6 +87,10 @@ public class AssetSetter {
         gp.npc[mapNum][1] = new Armour(gp);
         gp.npc[mapNum][1].worldX = gp.tileSize*1;
         gp.npc[mapNum][1].worldY = gp.tileSize*21;
+
+        gp.npc[mapNum][2] = new Empty_chest_1(gp);
+        gp.npc[mapNum][2].worldX = gp.tileSize*11;
+        gp.npc[mapNum][2].worldY = gp.tileSize*21;
     }
 
     public void setTempoNPC()
