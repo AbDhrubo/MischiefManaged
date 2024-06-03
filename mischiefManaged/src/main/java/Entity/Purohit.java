@@ -75,6 +75,12 @@ public class Purohit extends Entity{
             gp.player.stage = 9;
             dialogue = false;
         }
+        if(gp.player.stage == 13){
+            dialogueIndex = 0;
+            gp.npc[1][4].dialogue = true;
+            gp.player.stage = 9;
+            dialogue = false;
+        }
 
         gp.ui.currentDialogue = dialogues[dialogueIndex];
         gp.ui.dialogueImage = gp.ui.dialogueImages.get(2);
