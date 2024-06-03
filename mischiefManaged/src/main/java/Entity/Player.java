@@ -163,19 +163,26 @@ public void pickUpObject(int i)
                 break;
 
             case "Door":
-                if(hasKey > 0) {
-                    gp.obj[i] = null;
-                    hasKey--;
+                if(hasDoorKey > 0) {
+                    gp.obj[1][i] = null;
+
+                    gp.player.stage = 12;
+
+                    gp.npc[1][7].dialogueIndex = 1;
+                    gp.ui.currentDialogue = dialogues[dialogueIndex];
+                    gp.ui.dialogueImage = gp.ui.dialogueImages.get(2);
+                    gp.npc[1][7] = null;
+
                     gp.ui.showMessage("You opened the door!");
                 }
                 else {
                     gp.ui.showMessage("You need a key!");
                 }
                 break;
-            case "Boots":
-                speed += 2;
-                gp.obj[i] = null;
-                gp.ui.showMessage("Speed!");
+            case "Statue":
+
+                gp.obj[1][3] = null;
+                gp.player.stage = 13;
                 break;
             case "Chest":
             gp.ui.gameFinished = true;
