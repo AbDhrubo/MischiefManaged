@@ -183,6 +183,7 @@ public void pickUpObject(int i)
 
                 gp.obj[1][3] = null;
                 gp.player.stage = 13;
+                gp.npc[1][3].dialogue = true;
                 break;
             case "Chest":
             gp.ui.gameFinished = true;
